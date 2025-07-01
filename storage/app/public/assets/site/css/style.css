@@ -19,6 +19,8 @@
 }
 
 
+
+
 /* custom css here */
 
 .icon-container {
@@ -125,18 +127,40 @@
 @media (max-width: 991.98px) {
     .navbar-light .navbar-nav .nav-link  {
         margin-right: 0;
-        padding: 10px 0;
+        padding: 24px 0;
     }
     .navbar-light .navbar-nav .nav-link{
         font-size: 24px !important;
+    border-bottom: 1px solid #777777;
+    display: flex;
+    justify-content: space-between;
+    }
+
+    .navbar-light .navbar-brand{
+        height: 115px !important;
     }
 
     .navbar-light .navbar-nav {
-        border-top: 1px solid #D81324;
+        border-top: 3px solid #D81324;
+        padding-bottom: 100px !important;
     }
 
     .dropdown-menu{
         font-size: 1.5rem !important;
+    }
+
+    .container-fluid .carousel-item{
+        height: auto !important;
+    }
+    body{
+        font-size: 1.5rem !important;
+    }
+
+    .footer .btn.btn-link{
+        font-size: 1.5rem !important;
+    }
+    h5{
+        font-size: 2rem !important;
     }
 }
 
@@ -174,6 +198,12 @@
         opacity: 1;
     }
 }
+.navbar-toggler{
+    font-size: 2.2rem !important;
+}
+
+
+
 
 
 /*** Header ***/
@@ -213,6 +243,8 @@
       width: 100% !important;
     }
   } */
+
+  
   
   
 .carousel-control-prev,
@@ -231,6 +263,8 @@
         position: relative;
         min-height: 450px;
     }
+
+    
     
     #header-carousel .carousel-item img {
         position: absolute;

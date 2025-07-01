@@ -154,14 +154,14 @@
 <div class=" py-5 wow fadeInUp call_to_action_top mt-5" data-wow-delay="0.1s">
     <div class="container">
         <div class="row g-4">
-            <div class="col-lg-8 col-md-6">
+            <div class="col-lg-8 col-md-12">
                 <h6 class="text-primary text-uppercase" style="color: #ffff !important;"> Hemen Ara </h6>
 
                 <h1 class="mb-4">Ön Rezervasyon Sorunuz mu Var?</h1>
                 <p class="mb-0" style="color: #ffff;">Herhangi bir sorunuz varsa, lütfen bizimle iletişime geçin. Size yardımcı olmaktan memnuniyet duyarız.</p>
 
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-12">
                 <div class="bg-primary d-flex flex-column justify-content-center text-center h-100 p-4">
                     <h3 class="text-white mb-4"><i class="fa fa-phone-alt me-3"></i>
                         +90 530 200 52 20
