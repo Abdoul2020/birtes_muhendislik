@@ -375,7 +375,7 @@
                             @endphp
 
                             {{-- Carousel Column --}}
-                            <div class="col-md-12" style="min-height: 350px;">
+                            <div class="col-md-12 col-lg-6" style="min-height: 350px;">
                                 <div class="position-relative h-100">
                                     <div id="carouselPlace{{ $id }}" class="carousel slide h-100" data-bs-ride="carousel">
                                         <div class="carousel-inner h-100">
@@ -402,7 +402,7 @@
                             </div>
 
                             {{-- Description Column (only for the first room) --}}
-                            <div class="col-md-12">
+                            <div class="col-md-12 col-lg-6">
                                 <h3 class="mb-3">{{ $firstRoom->title }}</h3>
                                 <div class="mb-4">
                                     {!! Str::limit(strip_tags($firstRoom->description), 180) !!}
