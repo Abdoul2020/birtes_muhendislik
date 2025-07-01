@@ -29,58 +29,28 @@
 @endsection
 
 
-@section('styles')
-
-<style>
-    .container-fluid .carousel-item {
-        height: 60vh;
-        overflow: hidden;
-        position: relative;
-    }
-
-    #hero-video {
-        object-fit: cover;
-        height: 100%;
-    }
-</style>
-
-
-@endsection
-
-
-
-
 @section('content')
 
+
+
 <!-- Page Header Start -->
-
-<!-- Carousel Start -->
-<div class="container-fluid p-0 mb-5">
-    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-        <div class="carousel-inner">
-
-            <!-- Slide 1: Video -->
-            <div class="carousel-item active position-relative">
-                <video id="hero-video" class="w-100 d-block" muted loop playsinline>
-                    <source src="{{ asset('assets/site/img/hero.mp4') }}" type="video/mp4">
-                </video>
-                <div id="video-progress" class="position-absolute bottom-0 start-0 bg-danger" style="height:4px; width:0;"></div>
-                <div class="carousel-caption d-flex align-items-center carousel-caption_video">
-                    <!-- your caption content -->
-                </div>
-            </div>
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url( {{asset('assets/site/img/inside_page.jpg') }});">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown"> Forklift </h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="#">AnaSayfa</a></li>
+                    <li class="breadcrumb-item"><a href="#">Vinçler</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Forklift</li>
+                </ol>
+            </nav>
         </div>
     </div>
 </div>
-<!-- Carousel End -->
-
-
-
-
-
-
-
 <!-- Page Header End -->
+
+
 
 
 <!-- PRODUCT will listed here -->
@@ -89,7 +59,7 @@
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <!-- <h6 class="text-primary text-uppercase"> Ürünler </h6> -->
-            <h1 class="mb-5"> Kule Vinçler</h1>
+            <h1 class="mb-5"> Forklift </h1>
         </div>
 
 
@@ -119,7 +89,6 @@
                             @foreach($carouselImages as $index => $image)
                             <div class="carousel-item @if($index === 0) active @endif">
                                 <a href="{{ route('home.productsdetail', $room->slug) }}" class="stretched-link">
-
                                 <div class="product-img-wrapper">
                                     <img src="{{ asset($image) }}" class="d-block w-100" alt="{{ $room->title }} image {{ $index + 1 }}">
                                     </div>
@@ -145,6 +114,7 @@
             </div>
             @endforeach
         </div>
+
 
 
     </div>
@@ -179,40 +149,4 @@
 @endsection
 
 @section('scripts')
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const video = document.getElementById('hero-video');
-        const bar = document.getElementById('video-progress');
-        const carousel = document.getElementById('header-carousel');
-        const bsCarousel = new bootstrap.Carousel(carousel, {
-            interval: false
-        });
-
-        video.play();
-
-        // Progress bar animation
-        video.addEventListener('timeupdate', () => {
-            const pct = (video.currentTime / video.duration) * 100;
-            bar.style.width = pct + '%';
-        });
-
-        // When video ends, automatically slide to next
-        video.addEventListener('ended', () => {
-            bsCarousel.next();
-        });
-
-        // Play video again if reactivated
-        carousel.addEventListener('slide.bs.carousel', (e) => {
-            if (e.to === 0) {
-                video.currentTime = 0;
-                video.play();
-            }
-        });
-    });
-</script>
-
-
-
-
 @endsection

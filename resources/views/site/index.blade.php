@@ -305,11 +305,15 @@
                             @foreach($carouselImages as $i => $image)
                             <div class="carousel-item @if($i === 0) active @endif">
                                 <a href="{{ route('home.productsdetail', $room->slug) }}" class="stretched-link">
-                                    <img src="{{ asset($image) }}?v={{ now()->format('His') }}" class="d-block w-100" alt="{{ $room->title }} image {{ $i + 1 }}">
+                                    <div class="product-img-wrapper">
+                                        <img src="{{ asset($image) }}?v={{ now()->format('His') }}"
+                                            alt="{{ $room->title }} image {{ $i + 1 }}">
+                                    </div>
                                 </a>
                             </div>
                             @endforeach
                         </div>
+
                         @if($carouselImages->count() > 1)
                         <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel{{ $room->id }}" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
@@ -325,6 +329,9 @@
                     </div>
                 </div>
             </div>
+
+
+
             @endforeach
         </div>
 
@@ -381,10 +388,10 @@
                                         <div class="carousel-inner h-100">
                                             @foreach($allImages as $index => $img)
                                             <div class="carousel-item @if($index === 0) active @endif h-100">
-                                                <img src="{{ asset($img) }}?v={{ now()->format('His') }}"
-                                                    class="d-block w-100 h-100"
-                                                    style="object-fit: cover;"
-                                                    alt="{{ $firstRoom->title }} image {{ $index + 1 }}">
+                                                    <img src="{{ asset($img) }}?v={{ now()->format('His') }}"
+                                                        class="d-block w-100 h-100"
+                                                        style="object-fit: cover;"
+                                                        alt="{{ $firstRoom->title }} image {{ $index + 1 }}">
                                             </div>
                                             @endforeach
                                         </div>

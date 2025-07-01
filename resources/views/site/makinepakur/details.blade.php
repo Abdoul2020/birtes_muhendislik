@@ -104,9 +104,12 @@ $country = $map[$slug] ?? 'Türkiye';
                                         @foreach ($imgs as $item)
                                         <div class="col-12 col-md-12 col-lg-3 text-center">
                                             <a href="{{ route('home.productsdetail', $room->slug) }}" class="d-block text-decoration-none">
-                                                <img class="bg-light p-2 img-fluid mb-2"
-                                                    src="{{ asset($item['img']) }}?v=' . date('H:i:s')"
-                                                    alt="{{ $item['title'] }}">
+                                                <div class="product-img-wrapper">
+                                                    <img class="bg-light p-2 img-fluid mb-2"
+                                                        src="{{ asset($item['img']) }}?v=' . date('H:i:s')"
+                                                        alt="{{ $item['title'] }}">
+                                                </div>
+
                                                 <div class="testimonial-text bg-light p-2">
                                                     <p class="mb-0">{{ $item['title'] }}</p>
                                                 </div>

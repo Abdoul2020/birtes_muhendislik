@@ -37,7 +37,7 @@
 <div class="container-fluid page-header mb-5 p-0" style="background-image: url(  {{ asset('assets/site/img/inside_page.jpg') }});">
     <div class="container-fluid page-header-inner py-5">
         <div class="container text-center">
-            <h1 class="display-3 text-white mb-3 animated slideInDown"> BABA İnşaat</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown"> Liman Hizmetleri</h1>
         </div>
     </div>
 </div>
@@ -59,9 +59,10 @@
         <div class="row g-5 mt-3">
             <div class="col-lg-12 mt-5">
 
-                <h1 class="mb-4"><span class="text-primary"></span> İnşaat Hizmetleri</h1>
+                <h1 class="mb-4"><span class="text-primary"></span> Liman Hizmetleri</h1>
                 <p class="mb-4">
-                    Firmamız 1980 yılında Antalya da BABA KURTARMA olarak faaliyete girmiştir. 1980 yılında kara düzen dediğimiz vinçlerle temelini attığımız işletmeyi geliştirerek sektör haline getirip Türkiye'nin tüm illerine ulaşmayı başardık. Müşteri hizmetlerinde daha yakın ilgilenelim diye İstanbul Hadımköy de şubemiz bulunmaktadır. 2001 yılından itibaren ağımızı genişleterek Rusya/Almanya/Türkmenistan/Özbekistan şubelerimizi açmış bulunmaktayız.
+
+                BABA VİNÇ olarak, liman sahalarında yük taşıma, ağır nakliye ve vinç operasyonları konusunda uzmanlaşmış güçlü altyapımızla müşterilerimize kesintisiz hizmet sunuyoruz.
 
                 </p>
 
@@ -71,7 +72,7 @@
                 <p><i class="fa fa-check text-success me-3"></i> Teslim ve Kurulum</p>
 
                 <p class="mb-4">
-                    Biz tüm şubelerimizde ağır nakliye ve vinç işletmeciliği yapıyoruz ve Dünya'nın her yerinde Türkiye'de verdiğimiz hizmetin aynısını vermekteyiz. Şirketimiz mobil vinç, kule vinç, hi-up vinç ağır nakliye ve forklift hizmetlerinde uzman ve deneyimli bir şirkettir. Şirketimiz inşaat sektörü, liman hizmetleri, baraj, çimento fabrikaları gibi birçok sektörde hizmet vermektedir. Şirketimiz 300 araç parkı ve 200 personeli ile 7/24 hizmet vermektedir.
+                Deniz taşımacılığının en kritik aşaması olan yükleme ve boşaltma süreçlerinde, modern ekipmanlarımız ve deneyimli personelimizle zaman kaybını en aza indiriyor; yüklerinizin güvenle elleçlenmesini sağlıyoruz. Güçlü araç filomuz, geniş ekipman parkurumuz ve 7/24 kesintisiz destek anlayışımızla, liman hizmetlerinde güvenilir çözüm ortağınız olmaktan gurur duyuyoruz.
                 </p>
 
             </div>

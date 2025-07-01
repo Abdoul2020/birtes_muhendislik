@@ -22,7 +22,7 @@ class makineparkur extends Controller
 
         $placeMap = [
             'turkiye'        => 1,
-            'turkmenistan'   => 2,
+            // 'turkmenistan'   => 2,
             'germany'        => 3,
             'russia'         => 4,
         ];

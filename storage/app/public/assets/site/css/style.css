@@ -244,6 +244,24 @@
     }
   } */
 
+
+  .product-img-wrapper {
+    position: relative;
+    width: 100%;
+    /* Aspect ratio: height/width = 413/645 ≈ 0.64 -> 64% */
+    padding-top: 64%;
+    overflow: hidden;
+  }
+  
+  .product-img-wrapper img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+
   
   
   

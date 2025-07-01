@@ -93,10 +93,12 @@
                                                                 <div class="carousel-inner h-100">
                                                                     @foreach($imageList as $index => $img)
                                                                     <div class="carousel-item @if($index === 0) active @endif h-100">
-                                                                        <img src="{{ asset($img) }}?v={{ now()->format('His') }}"
+                                                                    <div class="product-img-wrapper">  
+                                                                    <img src="{{ asset($img) }}?v={{ now()->format('His') }}"
                                                                             class="d-block w-100 h-100"
                                                                             style="object-fit: cover;"
                                                                             alt="{{ $rooms->title }} image {{ $index + 1 }}">
+                                                                            </div>
                                                                     </div>
                                                                     @endforeach
                                                                 </div>
@@ -151,7 +153,9 @@
                                                             <div class="testimonial-item text-center">
 
                                                                 <a href="{{ route('home.productsdetail', $product->slug) }}">
+                                                                <div class="product-img-wrapper">
                                                                     <img class="bg-light p-2 mx-auto mb-3" src="{{ asset($img) }}" alt="{{ $product->title }}">
+                                                                    </div>
                                                                 </a>
 
                                                                 <div class="testimonial-text bg-light p-2">

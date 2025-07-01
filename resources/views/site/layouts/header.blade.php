@@ -49,8 +49,11 @@
                 <div class="nav-item dropdown">
                     <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Vinçler</a>
                     <div class="dropdown-menu fade-up m-0">
-                        <a href="{{ route('home.mobilvincpage') }}" class="dropdown-item">Mobil vinçler</a>
+                        <a href="{{ route('home.mobilvincpage') }}" class="dropdown-item">Mobil Vinçler</a>
                         <a href="{{ route('home.products') }}" class="dropdown-item"> Kule Vinçler</a>
+                        <a href="{{ route('home.hiyap') }}" class="dropdown-item"> Hiyap Vinç</a>
+                        <a href="{{ route('home.sepetli') }}" class="dropdown-item"> Sepetli Vinç</a>
+                        <a href="{{ route('home.forklift') }}" class="dropdown-item"> Forklift </a>
                     </div>
                 </div>
 
@@ -59,7 +62,7 @@
                     <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Makine Parkur</a>
                     <div class="dropdown-menu fade-up m-0">
                         <a href="{{ route('home.makineparkudetails', 'turkiye') }}" class="dropdown-item"> Türkiye</a>
-                        <a href="{{ route('home.makineparkudetails', 'turkmenistan') }}" class="dropdown-item"> Turkmenistan</a>
+                        <!-- <a href="{{ route('home.makineparkudetails', 'turkmenistan') }}" class="dropdown-item"> Turkmenistan</a> -->
                         <a href="{{ route('home.makineparkudetails', 'germany') }}" class="dropdown-item"> Almanya</a>
                         <a href="{{ route('home.makineparkudetails', 'russia') }}" class="dropdown-item">Rusya</a>
                     </div>
@@ -73,6 +76,7 @@
                         <a href="{{ route('home.satis') }}" class="dropdown-item"> Kule Vinç Satış</a>
                         <a href="{{ route('home.teknik') }}" class="dropdown-item">Teknik Servis</a>
                         <a href="{{ route('home.insaat') }}" class="dropdown-item">İnşaat</a>
+                        <a href="{{ route('home.liman') }}" class="dropdown-item">Liman</a>
                         <a href="{{ route('home.kuyumcu') }}" class="dropdown-item">Kuyumculuk</a>
                     </div>
                 </div>

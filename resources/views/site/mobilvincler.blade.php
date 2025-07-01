@@ -42,7 +42,7 @@
                 <ol class="breadcrumb justify-content-center text-uppercase">
                     <li class="breadcrumb-item"><a href="#">AnaSayfa</a></li>
                     <li class="breadcrumb-item"><a href="#">Vinçler</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Ürünler</li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Mobil Vinçler</li>
                 </ol>
             </nav>
         </div>
@@ -89,7 +89,9 @@
                             @foreach($carouselImages as $index => $image)
                             <div class="carousel-item @if($index === 0) active @endif">
                                 <a href="{{ route('home.productsdetail', $room->slug) }}" class="stretched-link">
+                                    <div class="product-img-wrapper">
                                     <img src="{{ asset($image) }}" class="d-block w-100" alt="{{ $room->title }} image {{ $index + 1 }}">
+                                    </div>
                                 </a>
                             </div>
                             @endforeach
