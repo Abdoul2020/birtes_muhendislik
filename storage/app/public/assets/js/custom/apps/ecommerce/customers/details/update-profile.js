@@ -61,7 +61,7 @@ var KTEcommerceUpdateProfile = function () {
 								text: "Your profile has been saved!",
 								icon: "success",
 								buttonsStyling: false,
-								confirmButtonText: "Ok, got it!",
+								confirmButtonText: "Tamam!",
 								customClass: {
 									confirmButton: "btn btn-primary"
 								}
@@ -77,7 +77,7 @@ var KTEcommerceUpdateProfile = function () {
 							text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
 							icon: "error",
 							buttonsStyling: false,
-							confirmButtonText: "Ok, got it!",
+							confirmButtonText: "Tamam!",
 							customClass: {
 								confirmButton: "btn btn-primary"
 							}

@@ -92,12 +92,12 @@ class ReservationController extends Controller
         if ($isToday) {
             // Today at 00:00 ‑ use this as our lower boundary
             $today = now()->startOfDay();
-        
+
             $reservations = $reservations->filter(function ($reservation) use ($today) {
                 // Normalise each reservation’s date to its own start‑of‑day
                 $reservationDate = $reservation->reservation_date->startOfDay();
                 // Keep only today or any date after today
-                return $reservationDate->gte($today); 
+                return $reservationDate->gte($today);
             });
         }
 
@@ -265,8 +265,8 @@ class ReservationController extends Controller
         // $placeId = $basePath === 'dubai' ? 1 : ($basePath === 'abudhabi' ? 2 : null);
 
         // if (!$placeId) {
-            // Handle error or redirect if basePath is neither dubai nor abudhabi
-            // abort(404, 'Location not recognized.');
+        // Handle error or redirect if basePath is neither dubai nor abudhabi
+        // abort(404, 'Location not recognized.');
         // }
 
         // Ensure the date is in the correct format (YYYY-MM-DD)
@@ -280,7 +280,7 @@ class ReservationController extends Controller
         // $reservations = Reservation::whereDate('reservation_date', '=', $date)
         //     ->get();
 
-            $reservations = Reservation::all();
+        $reservations = Reservation::all();
 
 
         // $archives = Reservation::onlyTrashed()->orderBy('id', 'desc')->paginate(10); // Bu doğru
@@ -404,110 +404,71 @@ class ReservationController extends Controller
      *
      * @param ReservationForm $request
      */
+
     public function store(ReservationForm $request)
     {
-
         $reservation = new Reservation();
-        $client = new ClientInfo();
-        $payment = new PaymentInfo();
-        $agent = new Agent();
+        $client      = new ClientInfo();
+        $payment     = new PaymentInfo();
+        $agent       = new Agent();
 
+        // Initialize array before assigning any values
+        $reservation_info = [];
+        $client_info      = [];
+        $payment_info     = [];
 
-        $reservation_info = $client_info = $payment_info = array();
-
-        if (Reservation::where(['room_id' => $request->room_id, 'hour_id' => $request->hour_id, 'reservation_date' => $request->reservation_date])->exists()) {
-            session()->flash('message', 'Selected date and hours already taken! It\'is not available anymore!');
-            return redirect()->back();
+        // Step 1: Build base reservation data from validated rules
+        foreach ($request->only(array_keys($request->rules())) as $key => $value) {
+            $reservation_info[$key] = $value;
         }
 
-        if ($request->get('payment_method') == 2) {
-            foreach ($request->only(array_values($payment->getFillable())) as $key => $value) $payment_info[$key] = $value;
+        // Step 2: Handle PDF upload *after* filling basic data
+        if ($request->hasFile('promotion_code')) {
+            $pdf = $request->file('promotion_code');
+            $filename = time() . '_' . Str::random(8) . '.' . $pdf->getClientOriginalExtension();
+            $path = $pdf->storeAs('uploads/promo_pdfs', $filename, 'public');
+            $reservation_info['promotion_code'] = $path;
+        }
+
+        // Step 3: Process payment
+        if ($reservation_info['payment_method'] == 2) {
+            foreach ($request->only($payment->getFillable()) as $k => $v) {
+                $payment_info[$k] = $v;
+            }
         } else {
-            $payment['outlet_id'] = 1;
-            $payment['order_id'] = Str::random(10);
+            $payment['outlet_id']  = 1;
+            $payment['order_id']   = Str::random(10);
             $payment['payment_id'] = Str::random(10);
         }
-
         $payment->fill($payment_info)->save();
         $reservation_info['payment_info_id'] = $payment->id;
 
-
-        foreach ($request->only(array_values($client->getFillable())) as $key => $value) $client_info[$key] = $value;
-        $client_info['device'] = $agent->device();
-        $client_info['platform'] = $agent->platform();
-        $client_info['platform_version'] = $agent->version($client_info['platform']);
-        $client_info['browser'] = $agent->browser();
-        $client_info['browser_version'] = $agent->version($client_info['browser']);
-        $client_info['language'] = $agent->languages()[0];
-        $client_info['ipAddress'] = \Request::getClientIp(true);
-
-        $mailDatas = ["client" => $client_info];
-
+        // Step 4: Process client info
+        foreach ($request->only($client->getFillable()) as $k => $v) {
+            $client_info[$k] = $v;
+        }
+        $client_info += [
+            'device'            => $agent->device(),
+            'platform'          => $agent->platform(),
+            'platform_version'  => $agent->version($agent->platform()),
+            'browser'           => $agent->browser(),
+            'browser_version'   => $agent->version($agent->browser()),
+            'language'          => $agent->languages()[0] ?? null,
+            'ipAddress'         => request()->ip(),
+        ];
         $client->fill($client_info)->save();
         $reservation_info['client_info_id'] = $client->id;
 
-        foreach ($request->only(array_keys($request->rules())) as $key => $value) $reservation_info[$key] = $value;
-        $reservation_info['created_by'] = $reservation_info['updated_by'] = Auth::user()->id ?? null;
+        // Step 5: Set metadata
+        $reservation_info['created_by'] = $reservation_info['updated_by'] = Auth::id();
 
+        // Step 6: Save reservation with correct data
         $result = $reservation->fill($reservation_info)->save();
 
-        $res = $reservation; // shorthand
-
-        if ($res->hour) {
-            $hour = Hour::select(['start', 'start_period', 'end', 'end_period'])
-                ->find($res->hour->id);
-
-            $hourLabel = $hour
-                ? ($hour->start->format("H:i") . $hour->start_period . " - " . $hour->end->format("H:i") . $hour->end_period)
-                : 'N/A';
-        } else {
-            $hourLabel = 'N/A';
-        }
-
-        // $hour = Hour::select(['start', 'start_period', 'end', 'end_period'])->find($reservation->hour->id);
-
-        $price = Price::where([
-            'place_id' => $reservation->place->id,
-            'room_id'  => $reservation->room->id,
-            'player'   => $reservation->players
-        ])->first();
-        
-        if ($price) {
-            $priceValue = $price->price;
-        } else {
-            // handle missing price (e.g., default value or throw)
-            $priceValue = 0;
-        }
-        
-
-        // $price = Price::where(['place_id' => $reservation->place->id, 'room_id' => $reservation->room->id, 'player' => $reservation->players])->get();
-
-        // $mailDatas = Arr::prepend($mailDatas, ($reservation->payment_method == 2) ? 'Online' : 'Upon Arrival', 'payment');
-        // $mailDatas = Arr::prepend($mailDatas, ($price[0]->price * $reservation_info['players']), 'total');
-        // $mailDatas = Arr::prepend($mailDatas, $price[0]->price, 'price');
-        // $mailDatas = Arr::prepend($mailDatas, $reservation->players, 'players');
-        // $mailDatas = Arr::prepend($mailDatas, ($hour->start->format("H:i") . $hour->start_period . " - " . $hour->end->format("H:i") . $hour->end_period), 'hour');
-        // $mailDatas = Arr::prepend($mailDatas, $reservation->reservation_date->format("d/m/Y"), 'date');
-        // $mailDatas = Arr::prepend($mailDatas, $reservation->room->title, 'room');
-        // $mailDatas = Arr::prepend($mailDatas, $reservation->place->title, 'location');
-
-
-        // if ($reservation->clientInfo->email) {
-        //     Mail::to($reservation->clientInfo->email)->cc(['info.dxb@black-out.ae'])->send(new ReservationComplated($mailDatas));
-        // }
-
-        // if ($reservation->clientInfo->email) {
-        //     Mail::to($reservation->clientInfo->email)->cc(
-        //         ($reservation->place_id == 1) ?
-        //             'info.dxb@black-out.ae' :
-        //             'info.ad@black-out.ae'
-        //         )->send(new ReservationComplated($mailDatas));
-        // }
-
         return response()->json([
-            "status" => $result,
-            "message" => "Yeni Kiralama Başarıyla Tamamlandı!",
-            "class" => ($result) ? "info" : "danger",
+            'status'  => $result,
+            'message' => 'Yeni Kiralama Başarıyla Oluşturuldu!',
+            'class'   => $result ? 'info' : 'danger',
         ]);
     }
 

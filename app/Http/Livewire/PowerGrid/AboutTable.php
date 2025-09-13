@@ -29,13 +29,13 @@ final class AboutTable extends PowerGridComponent
         $this->showCheckBox();
 
         return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
-            Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
+            // Exportable::make('export')
+            //     ->striped()
+            //     ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+            // Header::make()->showSearchInput(),
+            // Footer::make()
+            //     ->showPerPage()
+            //     ->showRecordCount(),
         ];
     }
 
@@ -122,16 +122,18 @@ final class AboutTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('Title', 'title')
+            Column::make('Id', 'id')
+            ->hidden(true, false),
+            Column::make('Başlık', 'title')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Placefor', 'place_id')
+            Column::make('Yer', 'place_id')
+            ->hidden(true, false)
                 ->sortable()
                 ->searchable(),
 
-            Column::make('About_Text', 'about_text')
+            Column::make('Açıklama', 'about_text')
             ->hidden(true, false)
                 ->sortable()
                 ->searchable(),
@@ -174,13 +176,15 @@ final class AboutTable extends PowerGridComponent
                 ->target('_self')
                 ->route('admin.about.edit', ['id' => 'id']),
 
-            Button::make('destroy', '<i class="fa-solid fa-trash fs-4 me-2"></i>')
-                ->class('btn btn-color-danger btn-active-color-info')
-                ->target('_self')
-                ->route('admin.about.destroy', ['id' => 'id'])
-                ->method('delete')
+            
         ];
     }
+
+    // Button::make('destroy', '<i class="fa-solid fa-trash fs-4 me-2"></i>')
+    //             ->class('btn btn-color-danger btn-active-color-info')
+    //             ->target('_self')
+    //             ->route('admin.about.destroy', ['id' => 'id'])
+    //             ->method('delete')
 
 
     /*

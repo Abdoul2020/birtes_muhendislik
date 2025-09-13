@@ -3,27 +3,33 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\HomeBanner;
 use App\Models\PhotoVideo;
+use App\Models\Projects;
 use App\Models\Room;
+use App\Models\SocialMedia;
+use App\Models\Storyline;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        //about text
+        $about_text = About::where('place_id', 1)->first();
 
-
-        //places
-        $places = [
-            1 => 'Türkiye',
-            2 => 'Türkmenistan',
-            3 => 'Almanya',
-            4 => 'Rusya',
-        ];
-
+        //services
         $products = Room::all();
-        $attachments = PhotoVideo::all()->groupBy('room_id');
+        $projects= Projects::take(4)->get();
+        $references = PhotoVideo::all();
 
+        //social media contacts
+        $contacts= SocialMedia::all();
+
+
+
+        $storyDescription = Storyline::first();
 
         // group rooms
         $groupedRooms = Room::where('status', 1)
@@ -32,11 +38,19 @@ class HomeController extends Controller
             ->groupBy('place_id');
 
 
+            $homebanner= HomeBanner::all();
+        
+
+        // $attachments_mobil = PhotoVideo::all()->groupBy('room_id');
+
         return view('site.index', [
-            'rooms' => $products,
-            'attachments' => $attachments,
-            'places' => $places,
-            'groupedRooms' => $groupedRooms
+            'about_birtes' => $about_text,
+            'services' => $products,
+            'projects' => $projects,
+            'references' => $references,
+            'contacts' => $contacts,
+            'storylinedescription'=> $storyDescription,
+            'homebanner' => $homebanner
         ]);
     }
 }

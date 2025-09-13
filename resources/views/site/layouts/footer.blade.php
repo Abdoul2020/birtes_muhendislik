@@ -1,81 +1,85 @@
-<!-- Footer Start -->
-<div class="container-fluid footer pt-5  wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
-                <h4 class=" mb-4">Adres</h4>
-                <p class="mb-2">
-                    <i class="fa fa-map-marker-alt me-3"></i>
-                    <a href="https://maps.google.com/?q=No:130/1,+Kepez,+Antalya" target="_blank" style="color:#596277">
-                        No:130/1, Kepez, Antalya
-                    </a>
-                </p>
+<footer id="footer" style="background-color: #323232;" class="footer_birtes">
+    <div class="container pb-5 pt-5">
+        <div class="row flex-wrap justify-content-between">
+            <div class="col-lg-4 col-md-6 pb-3">
+                <div class="footer-menu">
+                    <img src=" {{ asset('assets/site/img/logo_beyaz_bitest.png') }}" class="pb-5" alt="logo" style="max-width: 236px;">
 
-                <p class="mb-2">
-                    <i class="fa fa-phone-alt me-3"></i>
-                    <a href="tel:+905302005220" style="color:#596277">
-                    +90 530 200 52 20
-                    </a>
-                </p>
+                    <ul class="social-links d-flex flex-wrap list-unstyled">
+                        @foreach ($contacts as $contact)
+                        @if (in_array(strtolower($contact->platform), ['facebook', 'instagram', 'youtube']) && !empty($contact->username))
+                        <li class="social me-3">
+                            <a href="{{ $contact->username }}" target="_blank" rel="noopener noreferrer">
+                                <svg class="me-1" width="24" height="24">
+                                    <use xlink:href="#{{ strtolower($contact->platform) }}"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        @endif
+                        @endforeach
+                    </ul>
 
-                <p class="mb-2">
-                    <i class="fa fa-envelope me-3"></i>
-                    <a href="mailto:info@babavinc.com" style="color:#596277">
-                        info@babavinc.com
-                    </a>
-                </p>
 
-                <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/baba.vinc/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/watch?v=Gwsn3nIDJjM&t=8s" target="_blank"><i class="fab fa-youtube"></i></a>
 
-                    
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class=" mb-4">Kurumsal</h4>
-                <a class="btn btn-link" href="{{ route('home.about') }}">Hakkımızda</a>
-                <a class="btn btn-link" href="{{ route('home.visionandmission') }}"> Vizyon & Misyon</a>
-            </div>
 
-            <div class="col-lg-3 col-md-6">
-                <h4 class=" mb-4">Site Haritası</h4>
-                <a class="btn btn-link" href="/"> AnaSayfa</a>
-                <a class="btn btn-link" href="{{ route('home.about') }}"> Kurumsal</a>
-                <a class="btn btn-link" href="{{ route('home.mobilvincpage') }}"> Mobil Vinçler</a>
-                <a class="btn btn-link" href="{{ route('home.products') }}"> Kule Vinçler</a>
-                <a class="btn btn-link" href="{{ route('home.makineparkudetails', 'turkiye') }}"> Makine Parkur</a>
-                <a class="btn btn-link" href="{{ route('home.satis') }}"> Hizmetler</a>
-                <a class="btn btn-link" href="{{ route('home.contactpage') }}"> İletişim</a>
-            </div>
+            <div class=" col-lg-4 col-md-6 pb-3">
+                <div class="footer-menu">
+                    <h5 class="widget-title pb-2 fw-semibold" style="color: #f8f9fa; border-bottom: 1px solid #2a3990;">
+                        Kurumsal</h5>
+                    <ul class="menu-list d-flex flex-column list-unstyled pt-3">
+                        <li class="pb-2">
+                            <a href="{{route('home.about')}}"> Hakkımızda</a>
+                        </li>
+                        <li class="pb-2">
+                            <a href="{{ route('home.mission') }}">Misyon & Vizyon</a>
+                        </li>
+                        <li class="pb-2">
+                            <a href="{{ route('home.mission') }}">Ne yapıyoruz</a>
+                        </li>
+                        <li class="pb-2">
+                            <a href="{{ route('home.kvkk') }}"> KVKK</a>
+                        </li>
 
-            <div class="col-lg-3 col-md-6">
-                <h4 class=" mb-4">Hizmetler</h4>
-                <a class="btn btn-link" href="{{ route('home.mobilkiralama') }}"> Mobil Vinç Kiralama</a>
-                <a class="btn btn-link" href="{{ route('home.kiralama') }}"> Kule Vinç Kiralama</a>
-                <a class="btn btn-link" href="{{ route('home.satis') }}"> Kule Vinç Satış </a>
-                <a class="btn btn-link" href="{{ route('home.teknik') }}">Teknik Servis</a>
-                <a class="btn btn-link" href="{{ route('home.insaat') }}"> İnşaat</a>
-                <a class="btn btn-link" href="{{ route('home.kuyumcu') }}"> Kuyumculuk</a>
-            </div>
-
-
-        </div>
-    </div>
-    <div class="container">
-        <div class="copyright">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    © Copyright 2025 - Tüm Hakları Saklıdır. - Baba Vinç A.ş.
+                    </ul>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="footer-menu">
-                        <a href="/">AnaSayfa</a>
-                        <a href="#">S.S.S</a>
+            </div>
+
+            <div class="col-lg-4 col-md-6 pb-3">
+                <div class="footer-menu">
+                    <h5 class="widget-title pb-2 fw-semibold" style="color: #f8f9fa; border-bottom: 1px solid #2a3990;">
+                        Hizmetler
+                    </h5>
+
+                    <div class="row pt-3">
+                        @php
+                        $chunks = $services->chunk(4);
+
+                        @endphp
+
+                        @foreach ($chunks as $chunk)
+                        <div class="col-6">
+                            <ul class="menu-list d-flex flex-column list-unstyled">
+                                @foreach ($chunk as $service)
+                                <li class="pb-2">
+                                    <a href="{{ route('home.services') }}">{{ $service->title }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
-</div>
-<!-- Footer End -->
+    <div class="border-top">
+        <div class="container footer-bottom d-md-flex text-center justify-content-between py-4">
+            <p class="mb-0" style="color: #f8f9fa;">© 2025 Tüm Hakları Saklıdır. Birtes mühendislik</p>
+
+        </div>
+    </div>
+</footer>

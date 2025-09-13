@@ -359,7 +359,7 @@ var KTAppEcommerceSaveProduct = function () {
                                 text: "Form has been successfully submitted!",
                                 icon: "success",
                                 buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
+                                confirmButtonText: "Tamam!",
                                 customClass: {
                                     confirmButton: "btn btn-primary"
                                 }
@@ -378,7 +378,7 @@ var KTAppEcommerceSaveProduct = function () {
                             html: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin. <br/><br/>Please note that there may be errors in the <strong>General</strong> or <strong>Advanced</strong> tabs",
                             icon: "error",
                             buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
+                            confirmButtonText: "Tamam!",
                             customClass: {
                                 confirmButton: "btn btn-primary"
                             }

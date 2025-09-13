@@ -19,6 +19,7 @@ class Reservation extends Model
         'client_info_id',
         'payment_info_id',
         'reservation_date',
+        'reservation_date_return',
         'hour_id',
         'players',
         'payment_method',
@@ -40,9 +41,12 @@ class Reservation extends Model
     ];
     protected $casts = [
         'reservation_date' => 'date:d-m-Y',
+        'reservation_date_return'=> 'date:d-m-Y',
         'created_at' => 'date:d-m-Y',
         'reservation_hour' => 'date:H:i',
     ];
+
+    
 
 
 

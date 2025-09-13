@@ -8,6 +8,7 @@ use App\Models\Place;
 use App\Models\PhotoVideo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Projects;
 use Illuminate\Support\Facades\Storage;
 
 class photovideoController extends Controller
@@ -31,12 +32,17 @@ class photovideoController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->mergeIfMissing([
+            'place_for' => '1',
+        ]);
+
         $validated = $request->validate([
             'image_or_video_name' => 'required|string|max:255',
             'place_for' => 'required|string',
             'room_id' => 'required|exists:rooms,id',
-            'photo_img' => 'nullable|image|max:10240', // Adjust size as needed
-            'video_mp4' => 'nullable|mimes:mp4|max:51200', // Adjust size as needed
+            'photo_img' => 'nullable|image|max:10240', 
+            'video_mp4' => 'nullable|mimes:mp4|max:51200',
         ]);
 
         $photoPath = null;
@@ -58,7 +64,7 @@ class photovideoController extends Controller
             'videos_mp4' => $videoPath,
         ]);
 
-        return redirect()->back()->with('success', 'Fotoğraf başarıyla eklendi');
+        return redirect()->back()->with('success', 'Referans başarıyla eklendi');
     }
 
     // edit
@@ -66,25 +72,24 @@ class photovideoController extends Controller
     public function edit($id)
     {
 
-        
+
 
         $photovideo = PhotoVideo::findOrFail($id);
-    
-        $rooms = Room::all(); 
-        $places = ['Dubai', 'Abu Dhabi', 'All']; 
 
-    
+        $rooms = Projects::all();
+        $places = ['Dubai', 'Abu Dhabi', 'All'];
+
+
         return view('pages.photo_videos._edit', [
             'photovideo' => $photovideo,
             'rooms' => $rooms,
             'places' => $places
         ]);
-
     }
 
 
 
-  
+
 
 
 
@@ -92,6 +97,11 @@ class photovideoController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $request->mergeIfMissing([
+            'place_for' => '1',
+        ]);
+
         $request->validate([
             'image_or_video_name' => 'required|string|max:255',
             'place_for' => 'required|string',
@@ -99,30 +109,27 @@ class photovideoController extends Controller
             'photo_img' => 'nullable|image',
             'video_mp4' => 'nullable|mimes:mp4',
         ]);
-    
+
         $photovideo = PhotoVideo::findOrFail($id);
         $photovideo->name = $request->image_or_video_name;
         $photovideo->placefor = $request->place_for;
         $photovideo->room_id = $request->room_id;
-    
+
         if ($request->hasFile('photo_img')) {
             $photovideo->photos_img = $request->photo_img->store('storage/uploads/photos', 'public');
         }
         if ($request->hasFile('video_mp4')) {
             $photovideo->videos_mp4 = $request->video_mp4->store('storage/uploads/videos', 'public');
         }
-    
+
         $photovideo->save();
-    
-
-        session()->flash('message', 'Resim başarıyla güncellendi!');
-    return redirect()->back();
 
 
-
+        session()->flash('message', 'Referans başarıyla güncellendi!');
+        return redirect()->back();
     }
 
-    
+
 
 
 
@@ -133,8 +140,7 @@ class photovideoController extends Controller
         $photovideos = PhotoVideo::findOrFail($id);
         $photovideos->delete();
 
-        session()->flash('message', 'Resim başarıyla silindi!');
+        session()->flash('message', 'Referans başarıyla silindi!');
         return redirect()->back();
     }
-
 }

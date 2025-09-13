@@ -29,21 +29,20 @@ class ReservationForm extends FormRequest
     {
         $todayDate = date('Y-m-d');
         return [
+        
             'place_id' => ['required', Rule::exists(Place::class, 'id')],
             'room_id' => ['required', Rule::exists(Room::class, 'id')],
-            // 'hour_id' => ['nullable', 'integer', Rule::exists(Hour::class, 'id')],
-            'hour_id' => ['nullable', Rule::exists(Hour::class, 'id')],
+           
             'payment_method' => 'required:numeric:min:1',
             'players' => 'nullable|integer|min:0',
-            // 'players' => 'required',
-            'reservation_date' => 'required|date_format:Y-m-d|after_or_equal:'.$todayDate,
+            'reservation_date' => 'required|date_format:Y-m-d|after_or_equal:' . $todayDate,
+            'reservation_date_return' => 'required|date_format:Y-m-d|after_or_equal:' . $todayDate,
             'first_name' => 'required:min:3',
             'last_name' => 'sometimes:min:3',
             'email' => 'sometimes:email',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'comment' => 'sometimes',
-            'promotion_code' => 'sometimes',
-            'discount' => 'sometimes',
+            'promotion_code' => 'sometimes|file|mimes:pdf|max:5120',
         ];
     }
 
@@ -62,5 +61,4 @@ class ReservationForm extends FormRequest
             'payment_method.required' => 'You must select the payment method!',
         ];
     }
-
 }

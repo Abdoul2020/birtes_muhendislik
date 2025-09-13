@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Room;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
 class contactpage extends Controller
@@ -12,7 +14,20 @@ class contactpage extends Controller
      */
     public function index()
     {
-        return view('site.contact',);
+
+        $products = Room::all();
+         $socialmedia = SocialMedia::all();
+
+
+
+
+
+        return view('site.contact',[
+            'services'=> $products,
+            'socialcontact'=> $socialmedia,
+            'contacts' => $socialmedia,
+
+        ]);
     }
 
     /**

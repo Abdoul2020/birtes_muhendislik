@@ -123,6 +123,7 @@
                                         <th>Telefon : </th>
                                         <th> Ödeme Durumu</th>
                                         <th>Oluşturma Tarihi : </th>
+                                        <th> Sözleşmeyi gör: </th>
                                         @else
                                         <th>Date</th>
                                         @foreach ($roomTitles as $title)
@@ -138,14 +139,20 @@
                                     @foreach ($reservations as $reservation)
                                     @php
                                     // Parse dates once to avoid calling \Carbon\Carbon::parse() multiple times
-                                    $reservationDate = $reservation->reservation_date->format('d/m/Y');
+                                    $reservationDate = $reservation->reservation_date_return->format('d/m/Y');
+
                                     $startTime = $reservation->hour
                                     ? $reservation->hour->start->format('H:i')
                                     : 'N/A';
                                     $endTime = $reservation->hour
                                     ? $reservation->hour->end->format('H:i')
                                     : 'N/A';
-                                    $createdAt = $reservation->created_at->format('d/m/Y');
+                                    $createdAt = $reservation->reservation_date->format('d/m/Y');
+
+
+
+
+
                                     @endphp
                                     <tr>
                                         <td>&nbsp; <span>{{ $reservation->id }}</span> </td>
@@ -154,15 +161,11 @@
                                         </td>
                                         <td>{{ $reservation->room->title ?? 'Room not found' }}</td>
                                         <td>
-                                            {{ $reservation->place_id == 1 ? 'Dubai' : ($reservation->place_id == 2 ? 'Abu Dhabi' : 'N/A') }}
+                                            {{ $reservation->place_id == 1 ? 'Türkiye' : ($reservation->place_id == 2 ? 'Türkiye' : 'N/A') }}
                                         </td>
                                         <td>{{ $reservationDate }}</td>
                                         <td>
-                                            <a href="{{ route('admin.reservations.edit', ['reservation' => $reservation->id]) }}"
-                                                class="btn btn-small btn-primary"
-                                                style="background: #47be7d; padding:5px 8px; color:#fff">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+
                                             <form
                                                 action="{{ route('admin.reservations.destroy', ['reservation' => $reservation->id]) }}"
                                                 method="POST" style="display: inline-block;">
@@ -184,7 +187,25 @@
                                             N/A
                                             @endif
                                         </td>
+
                                         <td>{{ $createdAt }}</td>
+
+                                        <td>
+                                            @php
+                                            $file = public_path('storage/' . $reservation->promotion_code);
+                                            @endphp
+
+                                            @if (File::exists($file))
+                                            <a href="{{ asset($reservation->promotion_code) }}"
+                                                target="_blank"
+                                                style="color: blue; text-decoration: underline;">
+                                                indir
+                                            </a>
+                                            @else
+                                            yok
+                                            @endif
+                                        </td>
+
                                     </tr>
                                     @endforeach
                                     @else
@@ -462,6 +483,18 @@
                     localStorage.setItem('activeTab', link.id);
                 });
             });
+        });
+    </script>
+
+
+    <script>
+        $(function() {
+            // 1. Select the specific radio input and check it
+            const $input = $('input[name="place_id"][value="1"]');
+            $input.prop('checked', true);
+
+            // 2. Hide the entire wrapper div
+            $input.closest('.fv-row').hide();
         });
     </script>
     @endsection

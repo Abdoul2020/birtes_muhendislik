@@ -42,39 +42,26 @@
                         
                         <div class="col-12 float-start px-3 py-5">
                             <!-- Header input -->
-                            <div class="mb-7">
-                                <label for="header" class="form-label">Header</label>
-                                <input type="text" class="form-control" id="header" name="header" placeholder="Enter header" value="{{ $storyline->header }}" required>
-                            </div>
+                            
 
                             <!-- Header Title input -->
                             <div class="mb-7">
-                                <label for="header_title" class="form-label">Header Title</label>
+                                <label for="header_title" class="form-label"> Açıklama Başlığı </label>
                                 <input type="text" class="form-control" id="header_title" name="header_title" placeholder="Enter header title" value="{{ $storyline->header_title }}" required>
                             </div>
 
                             <!-- Storyline Description textarea -->
                             <div class="mb-7">
-                                <label for="storyline_description" class="form-label">Storyline Description</label>
+                                <label for="storyline_description" class="form-label"> Açıklama </label>
                                 <textarea class="form-control" id="floatingContentDescription" name="storyline_description" rows="4" placeholder="Enter storyline description" required>{{ $storyline->storyline_description }}</textarea>
                             </div>
-
                             <!-- Place select input -->
-                            <div class="mb-7">
-                                <label for="place_id" class="form-label">Place</label>
-                                <select class="form-select" id="place_id" name="place_id" required>
-                                    <option value="">Select Place</option>
-                                    <option value="Dubai" @selected($storyline->place_id == 'Dubai')>Dubai</option>
-                                    <option value="Abu Dhabi" @selected($storyline->place_id == 'Abu Dhabi')>Abu Dhabi</option>
-                                    <option value="All" @selected($storyline->place_id == 'All')>All</option>
-                                </select>
-                            </div>
-
+                           
                             <!-- Room select input -->
                             <div class="mb-7">
-                                <label for="room_id" class="form-label">Room</label>
+                                <label for="room_id" class="form-label">Açıklama Hizmeti </label>
                                 <select class="form-select" id="room_id" name="room_id" required>
-                                    <option value="">Select Room</option>
+                                    <option value="">  Hizmeti Seç</option>
                                     @foreach ($rooms as $room)
                                     <option value="{{ $room->id }}" @selected($storyline->room_id == $room->id)>{{ $room->title }}</option>
                                     @endforeach
@@ -83,8 +70,8 @@
 
                             <!-- Actions -->
                             <div class="text-center pt-15">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">İptal</button>
+                                <button type="submit" class="btn btn-primary">Güncelle</button>
                             </div>
                         </div>
                     </form>

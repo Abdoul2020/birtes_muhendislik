@@ -1,139 +1,128 @@
 <x-default-layout>
-    <!--begin::Toolbar-->
+    <!-- Toolbar -->
     <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6 col">
-        <!--begin::Toolbar container-->
         <div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
-            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3"></div>
+            <div class="page-title"></div>
             <div class="d-flex align-items-center gap-2 gap-lg-3">
-                <!--begin::Primary button-->
                 <button type="submit" class="btn btn-warning w-100" form="contentForm">
-                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                    <span class="svg-icon svg-icon-2">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
-                                  transform="rotate(-90 11.364 20.364)" fill="currentColor"/>
-                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"/>
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->
-                    Update About
+                    <span class="svg-icon svg-icon-2"><!-- SVG icon markup here --></span>
+                    Güncelle
                 </button>
-                <!--end::Primary button-->
             </div>
         </div>
-        <!--end::Toolbar container-->
     </div>
-    <!--end::Toolbar-->
-    <!--begin::Content-->
+
+    <!-- Content Container -->
     <div id="kt_app_content" class="app-content flex-column-fluid col">
-        <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container container-fluid">
-            <!--begin::Card-->
             <div class="card">
-                <!--begin::Card body-->
                 <div class="card-body py-4">
+                    <!-- Alerts -->
                     @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    @if (session()->has('message'))
-                        <div class="alert alert-success">
-                            {{ session('message') }}
-                        </div>
-                    @elseif(session()->has('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-
-                    <form method="post" id="contentForm" enctype="multipart/form-data"
-                          action="{{ route('admin.about.update', $record->id) }}">
-                        @csrf @method('patch')
-
-                        <div class="col-12 float-start px-3 py-5">
-                            <!--begin::Input group-->
-                            <div class="row g-9">
-                                <!--begin::Title input-->
-                                <div class="col-md-3 fv-row">
-                                    <div class="form-floating mb-7 fv-row">
-                                        <input name="title" type="text" class="form-control form-control-solid"
-                                               id="title" value="{{ $record->title }}" required/>
-                                        <label class="required" for="title">Title</label>
-                                    </div>
-                                </div>
-                                <!--end::Title input-->
-
-                                <!--begin::Placefor select-->
-                                <div class="col-md-3 fv-row">
-                                    <div class="form-floating mb-7 fv-row">
-                                        <select name="place_id" id="place_id" class="form-select form-select-solid" data-control="select2" data-placeholder="Select Place" data-allow-clear="true" required>
-                                            @foreach ($places as $place)
-                                                <option value="{{ $place->id }}" {{ $record->place_id == $place->id ? 'selected' : '' }}>
-                                                    {{ $place->title }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-
-                                        <label class="required" for="placefor">Place</label>
-                                    </div>
-                                </div>
-                                <!--end::Placefor select-->
-
-
-
-
-                                <!--begin::Content textarea-->
-                                <div class="d-flex flex-column mb-8">
-                                    <!--begin::Input group-->
-                                    <div class="form-floating">
-                                        <textarea name="about_Text" data-kt-autosize="true" class="tox-target form-control form-control-solid" id="floatingContentDescription">{{ old('about_Text', $record->about_Text) }}</textarea>
-                                        <label for="floatingContentDescription">About</label>
-                                    </div>
-                                    <!--end::Input group-->
-                                </div>
-
-                                <!--end::Content textarea-->
-                            </div>
-                            <!--end::Input group-->
-                        </div>
-                    </form>
-
-                    <div class="overlay-layer card-rounded bg-dark bg-opacity-20 d-none">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
+                    @endif
+                    @if (session('message'))
+                    <div class="alert alert-success">{{ session('message') }}</div>
+                    @elseif (session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+
+                    <!-- Form -->
+                    <form method="POST" id="contentForm" enctype="multipart/form-data"
+                        action="{{ route('admin.about.update', $record->id) }}">
+                        @csrf
+                        @method('PATCH')
+                        <div class="px-3 py-5">
+                            <div class="row g-7">
+                                <!-- Title -->
+                                <div class="col-md-12 mb-7">
+                                    <div class="form-floating">
+                                        <input name="title" type="text" class="form-control form-control-solid"
+                                            id="title" value="{{ old('title', $record->title) }}" required>
+                                        <label for="title">Başlık</label>
+                                    </div>
+                                </div>
+
+                                <!-- Hakkımızda -->
+                                <div class="col-12 mb-7">
+                                    <div class="form-floating">
+                                        <textarea name="about_Text" class="form-control form-control-solid"
+                                            id="about_Text">{{ old('about_Text', $record->about_Text) }}</textarea>
+                                        <label for="about_Text">Hakkımızda</label>
+                                    </div>
+                                </div>
+
+                                <!-- Vision -->
+                                <div class="col-12 mb-7">
+                                    <div class="form-floating">
+                                        <textarea name="vision" class="form-control form-control-solid"
+                                            id="vision">{{ old('vision', $record->vision) }}</textarea>
+                                        <label for="vision">Vizyon</label>
+                                    </div>
+                                </div>
+
+                                <!-- Mission -->
+                                <div class="col-12 mb-7">
+                                    <div class="form-floating">
+                                        <textarea name="mision" class="form-control form-control-solid"
+                                            id="mision">{{ old('mision', $record->mision) }}</textarea>
+                                        <label for="mision">Mision</label>
+                                    </div>
+                                </div>
+
+                                <!-- KVKK -->
+                                <div class="col-12 mb-7">
+                                    <div class="form-floating">
+                                        <textarea name="kvkk" class="form-control form-control-solid"
+                                            id="kvkk">{{ old('kvkk', $record->kvkk) }}</textarea>
+                                        <label for="kvkk">KVKK</label>
+                                    </div>
+                                </div>
+
+                                <!-- Kalite Polisic/Kalite Politikaları -->
+                                <div class="col-12 mb-7">
+                                    <div class="form-floating">
+                                        <textarea name="kalite_polic" class="form-control form-control-solid"
+                                            id="kalite_polic">{{ old('kalite_polic', $record->kalite_polic) }}</textarea>
+                                        <label for="kalite_polic">Kalite Politikası</label>
+                                    </div>
+                                </div>
+
+                                <!-- Small Image Uploads -->
+                                @for ($i = 1; $i <= 8; $i++)
+                                    <div class="col-md-3 mb-7">
+                                    <label for="poster_{{ $i }}">Resim {{ $i }}</label>
+                                    <input type="file" name="poster_{{ $i }}" class="form-control mb-2">
+                                    @if ($record->{'poster_' . $i})
+                                    <img src="{{ asset('/' . $record->{'poster_' . $i}) }}"
+                                        alt="Poster {{ $i }}" style="max-width: 100%; height: auto;">
+                                    @endif
+                            </div>
+                            @endfor
+
+                        </div>
                 </div>
-                <!--end::Card body-->
+                </form>
             </div>
-            <!--end::Card-->
         </div>
-        <!--end::Content container-->
     </div>
-    <!--end::Content-->
+    </div>
 
     @section('scripts')
-    <!--CKEditor Build Bundles:: Only include the relevant bundles accordingly-->
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
-    <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-inline.bundle.js') }}"></script>
-    <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-balloon.bundle.js') }}"></script>
-    <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-balloon-block.bundle.js') }}"></script>
-    <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-document.bundle.js') }}"></script>
-
     <script>
-        $(document).ready(function () {
-            ClassicEditor.create(document.querySelector('#floatingContentDescription'))
-                .then(editor => {
-                    console.log(editor);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+        document.addEventListener('DOMContentLoaded', function() {
+            ['about_Text', 'vision', 'mision', 'kvkk', 'kalite_polic'].forEach(id => {
+                ClassicEditor
+                    .create(document.querySelector(`#${id}`))
+                    .catch(error => console.error(error));
+            });
         });
     </script>
     @endsection

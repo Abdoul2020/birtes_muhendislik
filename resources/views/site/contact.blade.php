@@ -1,193 +1,239 @@
 @extends('site.master')
 
-@section('title','Baba Vinç - Kule Vinç Hizmetleri')
+@section('title','Birtes Mühendislik - Ana Sayfa')
 
 @section('meta_tags')
 <!-- Primary Meta Tags -->
 <meta charset="utf-8">
 <!-- Meta Title and Description -->
-<title>Baba Vinç - Kule Vinç Hizmetleri</title>
-<meta name="title" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta name="description" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta name="keywords" content=" Baba Vinç - Kule Vinç Hizmetleri ">
+<title> Birtes Mühendislik - İletişim </title>
+<meta name="title" content="Birtes Mühendislik - Ana Sayfa">
+<meta name="description" content="Birtes Mühendislik - Ana Sayfa">
+<meta name="keywords" content=" Birtes Mühendislik - Ana Sayfa ">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://babavinc.com/">
-<meta property="og:title" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta property="og:description" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta property="og:image" content="{{ asset('assets/site/img/vinc.png') }}">
+<meta property="og:url" content="https://birtesmuhendislik.com/">
+<meta property="og:title" content="Birtes Mühendislik - Ana Sayfa">
+<meta property="og:description" content="Birtes Mühendislik - Ana Sayfa">
+<meta property="og:image" content="{{ asset('assets/site/img/logo_favicon.png') }}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="ttps://babavinc.com/">
-<meta property="twitter:title" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta property="twitter:description" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta property="twitter:image" content="{{ asset('assets/site/img/vinc.png') }}">
+<meta property="twitter:url" content="">
+<meta property="twitter:title" content="Birtes Mühendislik - Ana Sayfa">
+<meta property="twitter:description" content="Birtes Mühendislik - Ana Sayfa">
+<meta property="twitter:image" content="{{ asset('assets/site/img/logo_favicon.png') }}">
 
 
 @endsection
+
+
+@section('styles')
+
+
+
+@endsection
+
 
 
 @section('content')
 
 
-<!-- Page Header Start -->
-<div class="container-fluid page-header mb-5 p-0" style="background-image: url({{ asset('assets/site/img/inside_page.jpg') }});">
-    <div class="container-fluid page-header-inner py-5">
-        <div class="container text-center">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">İletişim</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center text-uppercase">
-                    <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">İletişim</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-</div>
-<!-- Page Header End -->
+<div class="main-body container-xxl bg-white position-relative rounded-4 p-0 mb-lg-5">
 
-<!-- Contact Start -->
-<div class=" py-5">
-    <div class="container">
-
-        <div class="row g-4">
-
-            <div class="col-md-12 wow fadeIn mb-4" data-wow-delay="0.1s">
-                <iframe
-                    class="position-relative rounded w-100 h-100"
-                    src="https://www.google.com/maps?q=Antalya+Bulvarı+Kanal+Mah.+No:130/1+Kepez+Antalya&output=embed"
-                    frameborder="0"
-                    style="min-height: 350px; border:0;"
-                    allowfullscreen=""
-                    aria-hidden="false"
-                    tabindex="0">
-                </iframe>
-
-            </div>
-
-            <div class="text-center col-12 wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5"> İletişim Bilgileri</h1>
-            </div>
-
-            <div class="col-12">
-                <div class="row gy-4">
-                    <div class="col-lg-6 col-12">
-                        <div class="bg-light d-flex flex-column justify-content-center p-4">
-                            <h5 class="text-uppercase">// Adres //</h5>
-
-                            <p class="m-0">
-                                <a href="https://www.google.com/maps/search/?api=1&query=Antalya+Bulvar%C4%B1+Kanal+Mah.+No%3A130%2F1+Kepez+Antalya"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="text-decoration-none" style="color: #596277;">
-                                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                                    Antalya Bulvarı Kanal Mah. No:130/1 Kepez Antalya
-                                </a>
-
-                            </p>
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-12">
-                        <div class="bg-light d-flex flex-column justify-content-center p-4">
-                            <h5 class="text-uppercase">// E-Posta //</h5>
-
-                            <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i>
-                                <a href="mailto:info@babavinc.com" class="text-decoration-none" style="color: #596277;">info@babavinc.com</a>
-                            </p>
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-12  col-12">
-                        <div class="bg-light d-flex flex-column justify-content-center p-4">
-                            <h5 class="text-uppercase">// Telefon //</h5>
-
-                            <p class="m-0"><small class="fa fa-phone-alt text-primary me-2"></small>
-                                Operasyon Tel : <a href="tel:+902423320200" style="color: #596277;">+90 (242) 332 02 00</a> // <br>
-                                <span class=""> <strong style="visibility: hidden;"> OperasyonTelpho:</strong><a href="tel:+905302005220" style="color: #596277;">+90 (530) 200 52 20</a> </span>
-                            </p>
-                            <br>
-                            <p class="m-0"><small class="fa fa-phone-alt text-primary me-2"></small>
-                                Satın Alma Tel : <a href="tel:+902423351486" style="color: #596277;">+90 (242) 335 14 86</a> // <br>
-                                <span class=""> <strong style="visibility: hidden;"> OperasyonTelpho:</strong> <a href="tel:+905533916565" style="color: #596277;">+90 (553) 391 65 65</a> </span>
-
-                            </p>
-                            <br>
-
-                            <p class="m-0"><small class="fa fa-phone-alt text-primary me-2"></small>
-                                Muhasebe Tel : <a href="tel:+905335023617" style="color: #596277;">+90 (533) 502 36 17</a>
-                            </p>
-
-                        </div>
+    <section id="hero" class="pt-5 px-3">
+        <div style="background-color: #f8f9fa;" class="rounded-3">
+            <div class="container">
+                <div class="row">
+                    <div class="pt-3 pb-3" style="text-align: center;">
+                        <h2 class=" fw-bold display-2" style="font-size: 28px;"> İletişim </h2>
+                        <nav class="breadcrumb" style="justify-content: center;">
+                            <a class="breadcrumb-item" href="/">Ana Sayfa</a>
+                            <span class="breadcrumb-item active" aria-current="page"> İletişim </span>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Contact End -->
+    </section>
 
-<div class=" py-5 wow fadeInUp mt-5 " data-wow-delay="0.1s" style="background: #F3EED9; padding-bottom: 150px !important;">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-12 ">
-                <div class="text-center col-12 wow fadeInUp" data-wow-delay="0.1s">
-                    <h1 class="mb-5"> İletişim Formu</h1>
-                </div>
-                <div class="wow fadeInUp" data-wow-delay="0.2s">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                    <label for="name"> Ad Soyad</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email"> E-Posta</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email"> Telefon</label>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    <label for="subject">Konu Seçiniz</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                    <label for="message">Mesaj</label>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <button class="btn btn-primary w-100 py-3" type="submit"> Gönder</button>
-                            </div>
+
+    <!-- hizmetler services -->
+
+
+    <!-- Service Start -->
+
+    <section class="contact-us-wrap pt-5">
+        <div class="container">
+            <div class="row flex-row-reverse">
+                <div class="inquiry-item col-lg-6 mb-5">
+                    <h3 class="display-6 fw-bold"> İletişim Formu</h3>
+                    <p> Bizimle İletişime Geçin.</p>
+                    <form class="contact-form row mt-5 mt-lg-0">
+                        <div class="col-lg-4 col-md-12 col-sm-12 mb-5">
+                            <input type="text" name="name" placeholder="İsim ve Soyisim"
+                                class="form-control w-100 rounded-0 border-0 ps-3 py-2 contact_text_input"
+                                required="">
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 mb-5">
+                            <input type="email" name="email" placeholder="E-Posta"
+                                class="form-control w-100 rounded-0 border-0 ps-3 py-2 contact_text_input"
+                                required="">
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 mb-5">
+                            <input type="text" name="phone" placeholder="Telefon"
+                                class="form-control w-100 rounded-0 border-0 ps-3 py-2 contact_text_input"
+                                required="">
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 mb-5">
+                            <select
+                                class="form-select focus-transparent form-control w-100 rounded-0 border-0 ps-3 py-2 text-body contact_text_input"
+                                aria-invalid="false" name="choose">
+                                <option value="Select Your Service"> Talep ettiğiniz hizmet</option>
+                                <option value="1"> Havalandırma Tesisatı</option>
+                                <option value="2"> Yangın Sistemleri</option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-sm-12 mb-5">
+                            <input type="text" name="address" placeholder="Adres"
+                                class="form-control w-100 rounded-0 border-0 ps-3 py-2 contact_text_input">
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 mb-5">
+                            <select
+                                class="form-select focus-transparent form-control w-100 rounded-0 border-0 ps-3 py-2 text-body contact_text_input"
+                                aria-invalid="false" name="choose">
+                                <option value="Select Your Service">Şehir</option>
+                                <option value="Service"> Ankara</option>
+                                <option value="Service"> İstanbul</option>
+                                <option value="Service"> Konya</option>
+                                <option value="Service"> İzmir</option>
+                                <option value="Service"> Bursa</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-sm-12 mb-5">
+                            <input type="date" name="date"
+                                class="form-control w-100 rounded-0 border-0 px-3 py-2 text-body contact_text_input">
+                        </div>
+                        <div class="col-md-6 col-sm-12 mb-5">
+                            <input type="time" name="city"
+                                class="form-control w-100 rounded-0 border-0 px-3 py-2 text-body contact_text_input">
+                        </div>
+                        <div class="col-md-12 col-sm-12 mb-5">
+                            <textarea class="form-control w-100 rounded-0 border-0 ps-3 py-2 contact_text_input"
+                                rows="6" type="text" name="message" placeholder="Mesaj"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit"> Gönder</button>
                         </div>
                     </form>
                 </div>
+
+                <div class="contact-info col-lg-6 mb-5">
+                    @php
+                    $places = $socialcontact->groupBy('placefor');
+
+                    // Define labels & icons per platform
+                    $platformMap = [
+                    'instagram' => ['label' => 'Instagram', 'icon' => 'instagram'],
+                    'youtube' => ['label' => 'YouTube', 'icon' => 'youtube'],
+                    'whatsap' => ['label' => 'WhatsApp', 'icon' => 'whatsap'],
+                    'facebook' => ['label' => 'Facebook', 'icon' => 'facebook'],
+                    'eposta' => ['label' => 'E-posta', 'icon' => 'email'],
+                    'ofistelefon' => ['label' => 'Ofis Telefonu', 'icon' => 'phone'],
+                    'ceptelefon' => ['label' => 'Cep Telefonu', 'icon' => 'phone'],
+                    'ofisadres' => ['label' => 'Ofis Adres', 'icon' => 'location'],
+                    'depoadres' => ['label' => 'Depo Adres', 'icon' => 'location'],
+                    ];
+
+                    // Define title per placefor
+                    $placeTitle = [
+                    1 => 'Ofis',
+                    2 => 'Depo',
+                    // add more if needed
+                    ];
+                    @endphp
+
+                    @foreach($places as $placeKey => $items)
+                    <div class="{{ ($placeKey == 1 || $placeKey == 2) ? '' : 'mt-5' }}">
+                        <h3 class="office-title office-ankara mb-5 mt-5"
+                            style="{{ $placeKey == 1 ? 'border-left: 5px solid #323232; padding-left: 10px;' : 'color: #323232 !important; border-left: 5px solid #2a3990; padding-left: 10px !important;' }}">
+                            {{ $placeTitle[$placeKey] ?? 'Diğer' }}
+                        </h3>
+                        <ul class="contact-list">
+                            @foreach($items as $item)
+                            @php
+                            $plat = $item->platform;
+                            $info = $platformMap[$plat] ?? ['label' => ucfirst($plat), 'icon' => 'phone'];
+                            @endphp
+                            <li>
+                                <div class="icon-circle office-ankara" {{ $placeKey != 1 ? 'style=background-color:#323232;' : '' }}>
+                                    <svg class="icon" width="24" height="24">
+                                        <use xlink:href="#{{ $info['icon'] }}"></use>
+                                    </svg>
+                                </div>
+                                <div class="details">
+                                    <span class="label">{{ $info['label'] }}</span><br>
+                                    <span class="text">{{ $item->username }}</span>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endforeach
+                </div>
             </div>
-
-
-
-
         </div>
-    </div>
+    </section>
+    <!-- Service End -->
+    <section id="quote" class="pb-5">
+        <div class="container">
+
+
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="mapouter">
+                        <div class="gmap_canvas">
+
+
+
+                            <iframe id="map-frame" width="100%" height="500" style="border:0" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://maps.google.com/maps?q=0,0&z=1&output=embed" allowfullscreen>
+                            </iframe>
+
+                            <br>
+                            <style>
+                                .mapouter {
+                                    position: relative;
+                                    text-align: right;
+                                    height: 500px;
+                                    width: 100%;
+                                }
+                            </style><a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
+                            <style>
+                                .gmap_canvas {
+                                    overflow: hidden;
+                                    background: none !important;
+                                    height: 500px;
+                                    width: 100%;
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+    <!-- end of hizmetler services -->
 </div>
+
 
 @endsection
 
 @section('scripts')
+
 @endsection

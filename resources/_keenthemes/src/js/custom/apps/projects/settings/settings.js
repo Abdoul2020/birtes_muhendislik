@@ -68,7 +68,7 @@ var KTProjectSettings = function () {
                         text: "Thank you! You've updated your project settings",
                         icon: "success",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn fw-bold btn-light-primary"
                         }
@@ -79,7 +79,7 @@ var KTProjectSettings = function () {
                         text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn fw-bold btn-light-primary"
                         }

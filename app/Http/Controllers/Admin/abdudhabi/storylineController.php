@@ -48,7 +48,14 @@ class storylineController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $request->mergeIfMissing([
+            'place_id' => '1',
+            'header' => 'Default Header',
+        ]);
+
+        
+    
+        $validated = $request->validate([
             'header' => 'required|string|max:255',
             'header_title' => 'required|string|max:255',
             'storyline_description' => 'required|string',
@@ -56,21 +63,30 @@ class storylineController extends Controller
             'room_id' => 'required|integer|exists:rooms,id',
         ]);
 
-
+        
+    
         $storyline = new Storyline();
-        $storyline->header = $request->header;
-        $storyline->header_title = $request->header_title;
-        $storyline->storyline_description = $request->storyline_description;
-        $storyline->placefor = $request->place_id;
-        $storyline->room_id = $request->room_id;
+        $storyline->header = $validated['header'];
+        $storyline->header_title = $validated['header_title'];
+        $storyline->storyline_description = $validated['storyline_description'];
+        $storyline->placefor = $validated['place_id']; // Ensure this matches your database column
+        $storyline->room_id = $validated['room_id'];
+    
         $storyline->save();
-
-        return redirect()->back()->with('success', 'Storyline created successfully.');
+    
+        return redirect()->back()->with('success', 'Açıklama Yasızı Başarıyla Oluşturuldu.');
     }
-
+    
+    
 
     public function update(Request $request, Storyline $storyline, $id)
     {
+
+        $request->mergeIfMissing([
+            'place_id' => '1',
+            'header' => 'Default Header',
+        ]);
+        
         $validatedData = $request->validate([
             'header' => 'required|string|max:255',
             'header_title' => 'required|string|max:255',
@@ -92,7 +108,7 @@ class storylineController extends Controller
         ]);
 
 
-        session()->flash('message', 'Storyline are updated!');
+        session()->flash('message', 'Açıklama Başarıyla Güncellendi!');
         return redirect()->back();
     
         // Redirect back to the previous page with a success message
@@ -104,7 +120,7 @@ class storylineController extends Controller
         $faq = Storyline::findOrFail($id);
         $faq->delete();
 
-        session()->flash('message', 'Stroyline deleted successfully!');
+        session()->flash('message', 'Açıklama Başarıyla Silindi!');
         return redirect()->back();
     }
     

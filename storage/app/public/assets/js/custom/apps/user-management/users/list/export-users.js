@@ -57,7 +57,7 @@ var KTModalExportUsers = function () {
                                 text: "User list has been successfully exported!",
                                 icon: "success",
                                 buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
+                                confirmButtonText: "Tamam!",
                                 customClass: {
                                     confirmButton: "btn btn-primary"
                                 }
@@ -77,7 +77,7 @@ var KTModalExportUsers = function () {
                             text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                             icon: "error",
                             buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
+                            confirmButtonText: "Tamam!",
                             customClass: {
                                 confirmButton: "btn btn-primary"
                             }
@@ -112,7 +112,7 @@ var KTModalExportUsers = function () {
                         text: "Your form has not been cancelled!.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn btn-primary",
                         }
@@ -146,7 +146,7 @@ var KTModalExportUsers = function () {
                         text: "Your form has not been cancelled!.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn btn-primary",
                         }

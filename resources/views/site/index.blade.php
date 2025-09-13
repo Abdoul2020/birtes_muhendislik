@@ -1,29 +1,30 @@
 @extends('site.master')
 
-@section('title','Baba Vinç - Kule Vinç Hizmetleri')
+@section('title','Birtes Mühendislik - Ana Sayfa')
 
 @section('meta_tags')
 <!-- Primary Meta Tags -->
 <meta charset="utf-8">
 <!-- Meta Title and Description -->
-<title>Baba Vinç - Kule Vinç Hizmetleri</title>
-<meta name="title" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta name="description" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta name="keywords" content=" Baba Vinç - Kule Vinç Hizmetleri ">
+<title> Birtes Mühendislik - Ana Sayfa </title>
+<meta name="title" content="Birtes Mühendislik - Ana Sayfa">
+<meta name="description" content="Birtes Mühendislik - Ana Sayfa">
+<meta name="keywords" content=" Birtes Mühendislik - Ana Sayfa ">
+
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://babavinc.com/">
-<meta property="og:title" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta property="og:description" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta property="og:image" content="{{ asset('assets/site/img/vinc.png') }}">
+<meta property="og:url" content="https://birtesmuhendislik.com/">
+<meta property="og:title" content="Birtes Mühendislik - Ana Sayfa">
+<meta property="og:description" content="Birtes Mühendislik - Ana Sayfa">
+<meta property="og:image" content="{{ asset('assets/site/img/logo_favicon.png') }}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="ttps://babavinc.com/">
-<meta property="twitter:title" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta property="twitter:description" content="Baba Vinç - Kule Vinç Hizmetleri">
-<meta property="twitter:image" content="{{ asset('assets/site/img/vinc.png') }}">
+<meta property="twitter:url" content="">
+<meta property="twitter:title" content="Birtes Mühendislik - Ana Sayfa">
+<meta property="twitter:description" content="Birtes Mühendislik - Ana Sayfa">
+<meta property="twitter:image" content="{{ asset('assets/site/img/logo_favicon.png') }}">
 
 
 @endsection
@@ -31,509 +32,379 @@
 
 @section('styles')
 
-<style>
-    .container-fluid .carousel-item {
-        height: 60vh;
-        overflow: hidden;
-        position: relative;
-    }
-
-    #hero-video {
-        object-fit: cover;
-        height: 100%;
-    }
-
-    .png-container {
-        filter: drop-shadow(0px 100px 0 #D81324);
-        transform: translateY(-100px);
-        width: 48px;
-        height: 48px;
-        width: 48px;
-        height: 48px;
-    }
-
-
-    .img-tint-container {
-        position: relative;
-        width: 48px;
-        height: 48px;
-        overflow: hidden;
-    }
-
-    .img-tint {
-        display: block;
-        width: 100%;
-        height: 100%;
-        /* Drop a red copy directly underneath */
-        filter: drop-shadow(0 48px 0 #D81324);
-        /* Shift the original image up so only the colored shadow remains */
-        transform: translateY(-48px);
-    }
-</style>
-
 
 
 @endsection
 
-
-
 @section('content')
 
+<div class="main-body container-xxl bg-white position-relative rounded-4 p-0">
 
-<!-- Carousel Start -->
-<div class="container-fluid p-0 mb-5">
-    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-        <div class="carousel-inner">
+    <section id="slider" class="pt-5 px-3">
+        <div class="swiper slider position-relative rounded-3">
 
-            <!-- Slide 1: Video -->
-            <div class="carousel-item active position-relative">
-                <video id="hero-video" class="w-100 d-block" muted loop playsinline>
-                    <source src="{{ asset('assets/site/img/hero.mp4') }}" type="video/mp4">
-                </video>
-                <div id="video-progress" class="position-absolute bottom-0 start-0 bg-danger" style="height:4px; width:0;"></div>
-                <div class="carousel-caption d-flex align-items-center carousel-caption_video">
-                    <!-- your caption content -->
+
+            <div class="swiper-wrapper">
+                @foreach ($homebanner as $banner)
+                @if ($banner->placefor === 'mp4' && !empty($banner->videos_mp4))
+                <div class="swiper-slide slider-video-slide">
+                    <video class="fullscreen-bg"
+                        src="{{ Storage::url($banner->videos_mp4) }}"
+                        muted playsinline autoplay loop>
+                    </video>
+                    <div class="video-tracker"></div>
                 </div>
-            </div>
-
-            <!-- Slide 2: Image -->
-            <div class="carousel-item">
-                <img class="w-100" src="{{ asset('assets/site/img/hero_slide2.jpg') }}" alt="Image">
-                <div class="carousel-caption d-flex align-items-center">
-                    <div class="container">
-                        <div class="row align-items-center justify-content-center justify-content-lg-start">
-                            <div class="col-10 col-lg-7 text-center text-lg-start">
-                                <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown"> Projelerizi <br> <span>
-                                        Güçlendirin
-                                    </span> </h1>
-                                <h6 class="text-white text-uppercase mb-3 animated slideInDown"> Esnek kiralamalarımızla projelerinizi destekliyoruz. </h6>
-
-                                <a href="{{ route('home.products') }}" class="btn btn-primary py-3 px-5 animated slideInDown"> KİRALAMA<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
-                            <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
-                                <img class="img-fluid" src="{{ asset('assets/site/img/transparent_carousel.png') }}" alt="">
-                            </div>
+                @elseif ($banner->placefor === 'png' && !empty($banner->photos_img))
+                <div class="swiper-slide d-flex"
+                    style="background-image: url('{{ Storage::url($banner->photos_img) }}'); 
+                        background-size: cover; 
+                        background-repeat: no-repeat; 
+                        height: 80vh; 
+                        background-position: center;">
+                    <div class="container m-auto">
+                        <div class="text-start col-xl-6">
+                            {{-- Example content, adapt as needed --}}
+                            <h6 class="banner-topic text-white">
+                                <span class="text-primary">| </span> {{ $banner->name }}
+                            </h6>
+                            <h2 class="banner-title display-2 fw-bolder fst-italic text-white" style="visibility: hidden;">
+                                <span class="text-primary">Birtes</span> Mühendislik.
+                            </h2>
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-        </div>
-
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
-<!-- Carousel End -->
-
-
-
-
-<!-- Service Start -->
-<div class="container-xxl py-5" style="background-color: #B6262C;">
-    <div class="container">
-
-
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-12 col-12 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="d-flex bg-light py-5 px-4">
-
-                    <!-- <img src="{{ asset('assets/site/img/kule_1.png') }}" alt="Tower crane" class="png-container"/> -->
-
-                    <div class="img-tint-container">
-                        <img src="{{ asset('assets/site/img/kule_1.png') }}" alt="Tower crane" class="img-tint" />
-                    </div>
-
-                    <div class="ps-4">
-                        <h5 class="mb-3"> Kule Vinç Hizmetleri</h5>
-                        <p> Kaliteli Vinç Kiralamak.
-                            <span style="visibility: hidden;">hidden data Lorem ipsum dolor.</span>
-                        </p>
-                        <a
-                            class="btn btn-outline-primary incele-btn"
-                            href="{{ route('home.products') }}"> İncele</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-12 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="d-flex bg-light py-5 px-4">
-
-                    <div class="img-tint-container">
-                        <img src="{{ asset('assets/site/img/mobile_crane_1.png') }}" alt="Tower crane" class="img-tint" />
-                    </div>
-
-                    <!-- <img src="{{ asset('assets/site/img/mobile_crane_1.png') }}" alt="Tower crane" class="png-container" /> -->
-
-                    <div class="ps-4">
-                        <h5 class="mb-3"> Mobil Vinç Hizmetleri</h5>
-                        <p> Projelerinizin ihtiyacına yönelik her türlü mobil vinç hizmeti</p>
-                        <a
-                            class="btn btn-outline-primary incele-btn"
-                            href="{{ route('home.mobilvincpage') }}"> İncele</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-12 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="d-flex bg-light py-5 px-4">
-                    <!-- <i class="fa-solid fa-gem fa-3x text-primary" aria-hidden="true"></i> -->
-                    <!-- <img src="{{ asset('assets/site/img/jewelry_1.png') }}" alt="Tower crane" class="png-container" /> -->
-                    <div class="img-tint-container">
-                        <img src="{{ asset('assets/site/img/jewelry_1.png') }}" alt="Tower crane" class="img-tint" />
-                    </div>
-                    <div class="ps-4">
-                        <h5 class="mb-3"> Kuyum Hizmetleri</h5>
-                        <p> Altın, Gümüş ve Mücevherat
-                            <span style="visibility: hidden;">hidden data Lorem ipsum dolor.</span>
-                        </p>
-                        <a
-                            class="btn btn-outline-primary incele-btn"
-                            href="{{ route('home.kuyumcu') }}"> İncele</a>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-</div>
-<!-- Service End -->
-
-
-<!-- About Start -->
-<div class="container-xxl py-5 mt-5">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6 pt-4" style="min-height: 400px;">
-                <div class="position-relative h-100 wow fadeIn" data-wow-delay="0.1s">
-                    <img class="position-absolute img-fluid w-100 h-100" src="{{ asset('assets/site/img/about_2.jpg') }}" style="object-fit: cover;" alt="">
-                    <div class="position-absolute top-0 end-0 mt-n4 me-n4 py-4 px-5" style="background: #0B2154;">
-                        <h1 class="display-4 text-white mb-0"> 45 <span class="fs-4">Yıllık</span></h1>
-                        <h4 class="text-white">Tecrübe</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h6 class="text-primary text-uppercase">Kurumsal</h6>
-                <h1 class="mb-4"><span class="text-primary">BabaVinç</span> Hakkında</h1>
-                <p class="mb-4">
-
-                    Firmamız 1980 yılında Antalya da BABA KURTARMA olarak faaliyete girmiştir. 1980 yılında kara düzen dediğimiz vinçlerle temelini attığımız işletmeyi geliştirerek sektör haline getirip Türkiye'nin tüm illerine ulaşmayı başardık. Müşteri hizmetlerinde daha yakın ilgilenelim diye İstanbul Hadımköy de şubemiz bulunmaktadır. 2001 yılından itibaren ağımızı genişleterek Rusya/Almanya/Türkmenistan/Özbekistan şubelerimizi açmış bulunmaktayız.
-
-                </p>
-
-                <a href="{{ route('home.about') }}" class="btn btn-primary py-3 px-5">BİZİ Tanıyın
-                    <!-- <i class="fa fa-arrow-right ms-3"></i> -->
-                </a>
-
-                <div class="row g-4 mb-3 pb-3 mt-5">
-                    <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="d-flex justify-content-center">
-                            <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style="width: 45px; height: 45px;">
-                                <span class="fw-bold text-secondary me-2">
-                                    <img src="{{asset('assets/site/img/iso_logo3.png') }} " alt="" style="max-width: 80px;">
-                                </span>
-                                <span>
-                                    <img src="{{asset('assets/site/img/iso_logo2.png') }}" alt="" style="max-width: 80px;">
-                                </span>
-                            </div>
-
-                            <!-- <div class="ps-3">
-                                    <h6> Güven</h6>
-                                    
-                                </div> -->
+                @else
+                {{-- Optionally, fallback if placefor is something else or files missing --}}
+                <div class="swiper-slide d-flex"
+                    style="background-color: #000; height:80vh;">
+                    <div class="container m-auto">
+                        <div class="text-center text-white">
+                            <p>Banner unavailable</p>
                         </div>
                     </div>
-
-
-
                 </div>
+                @endif
+                @endforeach
+
+                <div class="slider-pagination swiper-pagination pb-4 d-block d-xl-none"></div>
+            </div>
+
+
+            <div
+                class="position-absolute top-50 end-0 translate-middle-y z-2 d-xl-flex d-none m-auto me-0 me-md-5 main-slider-button-next">
+                <img src="{{asset('assets/site/img/next_svg.svg') }}" alt="" style="width: 30px; height: 30px; background: rgba(0, 0, 0, 0.5);
+    padding: 10px;">
+            </div>
+            <div
+                class="position-absolute top-50 start-0 translate-middle-y z-2 d-xl-flex d-none m-auto ms-0 ms-md-5 main-slider-button-prev">
+                <img src="{{asset('assets/site/img/previous_svg.svg') }}" alt="" style="width: 30px; height: 30px; background: rgba(0, 0, 0, 0.5);
+    padding: 10px;">
             </div>
         </div>
-    </div>
-</div>
-<!-- About End -->
+    </section>
 
+    <section id="services" class=" pt-5 pb-5">
+        <div class="container">
+            <div style="text-align: center;">
+                <h3 class="display-6 fw-bold mb-5 pb-4 special-title">
+                    Hizmetlerimiz
+                </h3>
 
-<!-- PRODUCT will listed here -->
-<!-- Team Start -->
-<div class=" product_section py-5 mt-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="text-primary text-uppercase"> Ürünler </h6>
-            <h1 class="mb-5"> Kule Vinçler</h1>
-        </div>
+            </div>
 
-
-        <!-- carousell scroll -->
-
-
-
-
-
-        <!-- end of carousell scroll -->
-
-        <div class="row g-4" id="productList">
-            @foreach($rooms as $index => $room)
             @php
-            $mediaItems = $attachments->get($room->id, collect());
-            $carouselImages = collect();
+            $icons = [
+            'Sıhhı Tesisat' => 'plumber',
+            'Endüstriyel Tesisat' => 'plumbing',
+            'Isıtma Tesisatı' => 'water-heater',
+            'Yangın Tesisatı' => 'gas',
+            'Doğal Gaz' => 'gas',
+            'Soğutma Tesisatı' => 'water',
+            'Havalandırma' => 'install-option',
+            'Müşterek' => 'tee-pipe',
+            ];
 
-            if (!empty($room->poster)) {
-            $carouselImages->push($room->poster);
-            }
-            foreach ($mediaItems as $media) {
-            if (!empty($media->photos_img)) {
-            $carouselImages->push($media->photos_img);
-            }
-            }
+            $defaultIcon = 'plumber';
             @endphp
 
-            <div class="col-lg-4 col-md-12 product-item" style="display: none;">
-                <div class="card position-relative shadow-sm">
-                    <div id="productCarousel{{ $room->id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                        <div class="carousel-inner">
-                            @foreach($carouselImages as $i => $image)
-                            <div class="carousel-item @if($i === 0) active @endif">
-                                <a href="{{ route('home.productsdetail', $room->slug) }}" class="stretched-link">
-                                    <div class="product-img-wrapper">
-                                        <img src="{{ asset($image) }}?v={{ now()->format('His') }}"
-                                            alt="{{ $room->title }} image {{ $i + 1 }}">
+            <div class="row">
+                @foreach($services as $product)
+                @php
+                $icon = $icons[$product->title] ?? $defaultIcon;
+                @endphp
+                <div class="col-md-6 col-sm-12 col-lg-3 mb-4">
+                    <div class="service-post text-center p-5 bg-gray rounded-3">
+                        <a href="{{ route('home.services') }}">
+                            <svg class="text-primary mb-3" width="50" height="50">
+                                <use xlink:href="#{{ $icon }}"></use>
+                            </svg>
+                            <h6 class="mb-0">{{ $product->title }}</h6>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section id="subscribe" class=" bg-gray   pt-0 ">
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <h5 style="color: #2a3990;"> <span class="pb-1" style="border-bottom: 4px solid;"> HAKKIMIZDA </span></h5>
+
+
+                        <div class="h-100">
+                            <h1 class="display-6 fw-bold mb-2">Birtes <span style="color: #2a3990;">Mühendislik</span></h1>
+
+                            {!! $about_birtes->about_Text !!}
+
+                            <a class="btn btn-primary mt-4" href="{{ route('home.about') }}"> Devamını oku</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="row g-4 mb-4">
+                                    <div class="col-sm-6">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <img class="flex-shrink-0 me-3 colored-icon" src="{{asset('assets/site/img/icon/icon-07-primary.png') }}" alt="">
+                                        </div>
                                     </div>
-                                </a>
+                                    <div class="col-sm-6">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <img class="flex-shrink-0 me-3 colored-icon" src="{{asset('assets/site/img/icon/icon-09-primary.png') }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            @if(!empty($about_birtes->poster_1))
+                            <div class="col-6 text-end">
+                                <img class="img-fluid w-75 wow zoomIn" data-wow-delay="0.1s"
+                                    src="{{ asset($about_birtes->poster_1) }}"
+                                    style="margin-top: 25%;" alt="Poster 1">
+                            </div>
+                            @endif
+
+                            @if(!empty($about_birtes->poster_2))
+                            <div class="col-6 text-start">
+                                <img class="img-fluid w-100 wow zoomIn" data-wow-delay="0.3s"
+                                    src="{{ asset($about_birtes->poster_2) }}"
+                                    alt="Poster 2">
+                            </div>
+                            @endif
+
+                            @if(!empty($about_birtes->poster_3))
+                            <div class="col-6 text-end">
+                                <img class="img-fluid w-50 wow zoomIn" data-wow-delay="0.5s"
+                                    src="{{ asset($about_birtes->poster_3) }}"
+                                    alt="Poster 3">
+                            </div>
+                            @endif
+
+                            @if(!empty($about_birtes->poster_4))
+                            <div class="col-6 text-start">
+                                <img class="img-fluid w-75 wow zoomIn" data-wow-delay="0.7s"
+                                    src="{{ asset($about_birtes->poster_4) }}"
+                                    alt="Poster 4">
+                            </div>
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="work" class="padding-small"
+        style="background: #2a3990; border-top-left-radius: 60px; border-top-right-radius: 60px;">
+        <div class="container">
+
+            <div style="
+        display: flex;
+        justify-content: space-between;
+          " class="pb-5">
+
+                <div style="border-left: 5px solid white;
+          padding-left: 10px;">
+                    <h3 class="display-6 fw-bold mb-0" style="color:#f8f9fa;">Projelerimiz </h3>
+                    <h6 class="mb-5" style="color: #323232;">
+                        Ne Yaptık?
+                    </h6>
+                </div>
+
+                <div>
+                    <a class="btn btn-primary mt-4 project_btn" href="{{ route('home.projects') }}" style="background: #f8f9fa; color: #2a3990;"> Tümü
+                        İncele</a>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                @foreach($projects as $project)
+                <div class="col-md-3 mb-4">
+                    <div class="project-content position-relative bg-black">
+                        <img
+                            class="project-img img-fluid"
+                            src="{{ $project->poster ? asset($project->poster) : asset('assets/site/img/default-project.jpg') }}"
+                            alt="{{ $project->title }}">
+                        <div class="project-description p-5 p-md-4 position-absolute bottom-0 start-0">
+                            <h4 class="text-white">{{ $project->title }}</h4>
+                            <a
+                                href="{{ route('home.projectsdetail', $project->slug) }}"
+                                class="text-white text-decoration-underline">
+                                Detayı gör
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+
+
+
+        </div>
+    </section>
+
+
+    <section id="cta"
+        style="background-image: url({{ asset($about_birtes->poster_5) }}); background-size: cover; background-repeat: no-repeat;  background-position: center">
+        <div class="container pt-5 pb-5" style="max-width: 800px;">
+            <div class="row g-lg-5 align-items-center">
+
+                <div class="col-lg-12 mb-5 mb-lg-0" style="text-align: center;">
+
+                    <h2 class="display-4 fw-bold text-white">
+                        <span id="before"> </span>
+                        <span id="typed-word"></span>
+                        <span id="after"> </span>
+                        <span class="cursor">|</span>
+                        <span>
+                            Mühendislik
+                        </span>
+                    </h2>
+
+
+                    <p class="text-white"> {!! $storylinedescription->storyline_description !!}
+                    </p>
+
+                    <a class="btn btn-primary mt-4" href="{{ route('home.about') }}"> Firma Profili</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="quote" class="bg-gray ">
+
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class=" wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h1 class="display-6 mb-5 fw-bold"> Referanslarımız</h1>
+                </div>
+                <div class="row g-5">
+
+
+                    <div class="col-lg-12 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="owl-carousel testimonial-carousel">
+                            @foreach($references as $reference)
+                            <div class="testimonial-item text-center">
+                                <img class="ref-img" src="{{ asset($reference->photos_img) }}" alt="{{ $reference->name }}">
                             </div>
                             @endforeach
                         </div>
-
-                        @if($carouselImages->count() > 1)
-                        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel{{ $room->id }}" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel{{ $room->id }}" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                        @endif
                     </div>
 
-                    <div class="bg-white p-4">
-                        <h5 class="fw-bold mb-0">{{ $room->title }}</h5>
-                    </div>
+
                 </div>
             </div>
-
-
-
-            @endforeach
         </div>
 
-        <div class="text-center mt-4">
-            <button id="loadMoreBtn" class="btn btn-primary"> Daha Fazla</button>
-        </div>
-    </div>
-</div>
-<!-- Team End -->
-
-
-<!-- Service Start -->
-<div class="container-xxl service py-5 mt-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="text-primary text-uppercase"> Araçlar</h6>
-            <h1 class="mb-5"> Farklı Ülke Araç Parkımız</h1>
-        </div>
-
-
-        <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="col-lg-4">
-                <div class="nav w-100 nav-pills me-4">
-                    @foreach($places as $id => $name)
-                    <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4 @if($loop->first) active @endif"
-                        data-bs-toggle="pill" data-bs-target="#tab-pane-{{ $id }}" type="button">
-                        <h4 class="m-0 text-capitalize">{{ $name }}</h4>
-                    </button>
-                    @endforeach
-                </div>
+        <div class="container pb-5">
+            <div class="text-center" style="">
+                <a class="btn btn-primary mt-4 mx-auto" href="{{ route('home.references') }}" style="background: #2a3990; width: 100%;"> Referanslarımız</a>
             </div>
 
-            <div class="col-lg-8">
-                <div class="tab-content w-100">
+        </div>
+
+    </section>
 
 
-                    @foreach($places as $id => $name)
-                    <div class="tab-pane fade @if($loop->first) show active @endif" id="tab-pane-{{ $id }}">
-                        <div class="row g-4">
-                            @php
-                            $rooms = $groupedRooms[$id] ?? collect();
-                            $firstRoom = $rooms->first();
-                            $allImages = collect();
+    <section id="faqs" class="padding-medium" style="
+    background-image: url('{{asset('assets/site/img/contact_map.png') }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  ">
+        <div class="container">
+            <div class="row gy-4 justify-content-center">
 
-                            foreach ($rooms as $room) {
-                            $allImages->push($room->poster);
-                            }
-                            @endphp
 
-                            {{-- Carousel Column --}}
-                            <div class="col-md-12 col-lg-6" style="min-height: 350px;">
-                                <div class="position-relative h-100">
-                                    <div id="carouselPlace{{ $id }}" class="carousel slide h-100" data-bs-ride="carousel">
-                                        <div class="carousel-inner h-100">
-                                            @foreach($allImages as $index => $img)
-                                            <div class="carousel-item @if($index === 0) active @endif h-100">
-                                                    <img src="{{ asset($img) }}?v={{ now()->format('His') }}"
-                                                        class="d-block w-100 h-100"
-                                                        style="object-fit: cover;"
-                                                        alt="{{ $firstRoom->title }} image {{ $index + 1 }}">
-                                            </div>
-                                            @endforeach
-                                        </div>
+                <div class="col-md-8">
+                    @php
+                    $platformIcons = [
+                    'ofisadres' => 'location',
+                    'eposta' => 'email',
+                    'ofistelefon' => 'phone',
+                    ];
+                    $defaultIcon = 'contact';
 
-                                        @if($allImages->count() > 1)
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPlace{{ $id }}" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon"></span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPlace{{ $id }}" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon"></span>
-                                        </button>
-                                        @endif
-                                    </div>
-                                </div>
+                    $labels = [
+                    'ofisadres' => 'Adres:',
+                    'eposta' => 'E-posta:',
+                    'ofistelefon' => 'Telefon:',
+                    ];
+
+                    // Define which platforms you want to show
+                    $allowedPlatforms = ['ofisadres', 'eposta', 'ofistelefon'];
+                    @endphp
+
+                    <div class="contact-list">
+                        @foreach ($contacts as $contact)
+                        @if (in_array($contact->platform, $allowedPlatforms))
+                        @php
+                        $icon = $platformIcons[$contact->platform] ?? $defaultIcon;
+                        $label = $labels[$contact->platform] ?? ucfirst($contact->platform) . ':';
+                        @endphp
+                        <div class="contact-item">
+                            <div class="icon-box">
+                                <svg class="text-primary me-2" width="25" height="25">
+                                    <use xlink:href="#{{ $icon }}"></use>
+                                </svg>
                             </div>
-
-                            {{-- Description Column (only for the first room) --}}
-                            <div class="col-md-12 col-lg-6">
-                                <h3 class="mb-3">{{ $firstRoom->title }}</h3>
-                                <div class="mb-4">
-                                    {!! Str::limit(strip_tags($firstRoom->description), 180) !!}
-                                </div>
-
-                                @php
-                                // Map display names to URL slugs
-                                $slugMap = [
-                                'Türkiye' => 'turkiye',
-                                'Türkmenistan' => 'turkmenistan',
-                                'Almanya' => 'germany',
-                                'Rusya' => 'russia',
-                                ];
-
-                                // $name is the display name, e.g. 'Türkiye'
-                                $slug = $slugMap[$name] ?? Str::slug($name);
-                                @endphp
-
-                                <a href="{{ route('home.makineparkudetails', $slug) }}" class="btn btn-primary py-3 px-5 mt-3">
-                                    İncele <i class="fa fa-arrow-right ms-3"></i>
-                                </a>
+                            <div class="text-box">
+                                <div class="label">{{ $label }}</div>
+                                <div class="detail">{{ $contact->username }}</div>
                             </div>
                         </div>
+                        @endif
+                        @endforeach
                     </div>
-                    @endforeach
-
-
-
-
                 </div>
-            </div>
-
-
-        </div>
 
 
 
-    </div>
-</div>
-<!-- Service End -->
-
-<!-- Call To Action Start -->
-<div class=" py-5 wow fadeInUp call_to_action_top mt-5" data-wow-delay="0.1s">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-8 col-md-12">
-                <h6 class="text-primary text-uppercase" style="color: #ffff !important;"> Hemen Ara </h6>
-
-                <h1 class="mb-4">Ön Rezervasyon Sorunuz mu Var?</h1>
-                <p class="mb-0" style="color: #ffff;">Herhangi bir sorunuz varsa, lütfen bizimle iletişime geçin. Size yardımcı olmaktan memnuniyet duyarız.</p>
-
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="bg-primary d-flex flex-column justify-content-center text-center h-100 p-4">
-                    <h3 class="text-white mb-4"><i class="fa fa-phone-alt me-3"></i>
-                        +90 530 200 52 20
-                    </h3>
-                    <a href="{{ route('home.contactpage') }}" class="btn btn-secondary py-3 px-5"> BİZİ Ara<i class="fa fa-arrow-right ms-3"></i></a>
-                </div>
             </div>
         </div>
-    </div>
+    </section>
+
 </div>
 
 @endsection
 
 @section('scripts')
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const video = document.getElementById('hero-video');
-        const bar = document.getElementById('video-progress');
-        const carousel = document.getElementById('header-carousel');
-        const bsCarousel = new bootstrap.Carousel(carousel, {
-            interval: false
-        });
-
-        video.play();
-
-        // Progress bar animation
-        video.addEventListener('timeupdate', () => {
-            const pct = (video.currentTime / video.duration) * 100;
-            bar.style.width = pct + '%';
-        });
-
-        // When video ends, automatically slide to next
-        video.addEventListener('ended', () => {
-            bsCarousel.next();
-        });
-
-        // Play video again if reactivated
-        carousel.addEventListener('slide.bs.carousel', (e) => {
-            if (e.to === 0) {
-                video.currentTime = 0;
-                video.play();
-            }
-        });
-    });
-</script>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const items = document.querySelectorAll('.product-item');
-        let shown = 0;
-
-        function showMore() {
-            const increment = (window.innerWidth >= 992) ? 6 : 3;
-            for (let i = 0; i < increment; i++) {
-                if (shown < items.length) {
-                    items[shown].style.display = '';
-                    shown++;
-                }
-            }
-            if (shown >= items.length) {
-                document.getElementById('loadMoreBtn').remove();
-            }
-        }
-
-        document.getElementById('loadMoreBtn').addEventListener('click', showMore);
-        showMore(); // initial display
-    });
-</script>
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 @endsection

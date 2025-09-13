@@ -7,7 +7,7 @@
             <!--begin::Modal header-->
             <div class="modal-header">
                 <!--begin::Modal title-->
-                <h2 class="fw-bold"> Yeni Ürün Ekle</h2>
+                <h2 class="fw-bold"> Yeni Hizmet Ekle</h2>
                 <!--end::Modal title-->
                 <!--begin::Close-->
                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -30,34 +30,18 @@
 
 
                     <div class="row">
-
-
                     <!-- Input fields for room details -->
                     <div class="col-md-6 mb-10">
-                        <label for="title" class="required form-label"> Ürün Adı </label>
-                        <input type="text" name="title" class="form-control form-control-solid" placeholder="Ürün başlığı ekle"/>
+                        <label for="title" class="required form-label"> Hizmet Adı </label>
+                        <input type="text" name="title" class="form-control form-control-solid" placeholder="Hizmet başlığı ekle"/>
                     </div>
                     <div class=" col-md-6 mb-10">
-                        <label for="slug" class="required form-label">Slug</label>
-                        <input type="text" name="slug" class="form-control form-control-solid" placeholder="slug"/>
+                        <label for="slug" class="required form-label">uzantı</label>
+                        <input type="text" name="slug" class="form-control form-control-solid" placeholder="uzantı"/>
                     </div>
                     
                    
-                   
-                    <div class=" col-md-6 mb-10">
-                        <label for="place_id" class="required form-label">Yer</label>
-                        <select name="place_id" class="form-select form-select-solid" data-control="select2" data-placeholder="Ülke yeri seç">
-                            <option></option>
-                            @foreach ($places as $place)
-                            <option value="{{ $place->id }}">{{ $place->title }}</option>
-                            @endforeach
-                        </select>
-
-                    </div>
-                    <div class="col-md-6 mb-10">
-                        <label for="order" class="required form-label">Sıra</label>
-                        <input type="number" name="order" class="form-control form-control-solid" placeholder="Ürün sırası gir" min="1"/>
-                    </div>
+                    
                     <div class="col-md-6 mb-10">
                         <label for="status" class="form-label">Durum</label>
                         <div class="form-check form-switch">

@@ -7,7 +7,7 @@
             <!--begin::Modal header-->
             <div class="modal-header">
                 <!--begin::Modal title-->
-                <h2>Create About</h2>
+                <h2> Hakkımızda Ekle </h2>
                 <!--end::Modal title-->
                 <!--begin::Close-->
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -34,8 +34,10 @@
                         <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required>
                     </div>
                     <!--end::Title input-->
+
+
                     <!--begin::Place input-->
-                    <div class="mb-7">
+                    <!-- <div class="mb-7">
                         <label for="place_id" class="form-label">Place</label>
                         <select class="form-select" id="place_id" name="place_id" required>
                             <option value="">Select Place</option>
@@ -43,9 +45,8 @@
                                 <option value="{{ $place->id }}">{{ $place->title }}</option>
                             @endforeach
                         </select>
-
-
-                    </div>
+                    </div> -->
+                    
                     <!--end::Place input-->
                     <!--begin::Content textarea-->
                     <div class="d-flex flex-column mb-8">

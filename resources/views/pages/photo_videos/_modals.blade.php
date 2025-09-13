@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered mw-750px">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="fw-bold"> Yeni Resim Ekle</h2>
+                <h2 class="fw-bold"> Yeni Referans Ekle</h2>
                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                     <!-- SVG for closing modal -->
                 </div>
@@ -12,23 +12,13 @@
                 <form id="kt_modal_add_form_photo_video" class="form" action="{{ route('admin.photos_videos.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="fv-row mb-7">
-                        <label class="required form-label"> Resim Adı:</label>
-                        <input type="text" name="image_or_video_name" class="form-control form-control-solid" placeholder="Resim Adı Ekle" required/>
+                        <label class="required form-label"> Referans Adı:</label>
+                        <input type="text" name="image_or_video_name" class="form-control form-control-solid" placeholder="Referans Adı Ekle" required/>
                     </div>
                     
+                   
                     <div class="fv-row mb-7">
-                        <label class="required form-label">Bağlı Ülke:</label>
-                        <select name="place_for" class="form-select form-select-solid" required>
-                            <option value=""> Bağlı Ülke Secin</option>
-                            <option value="Türkiye">Türkiye</option>
-                            <option value="Turkmenistan"> Turkmenistan</option>
-                            <option value="Almanya"> Almanya</option>
-                            <option value="Rusya"> Rusya</option>
-                            <option value="All">Tüm Ülke</option>
-                        </select>
-                    </div>
-                    <div class="fv-row mb-7">
-                        <label class="required form-label">Bağlı Ürün:</label>
+                        <label class="required form-label">Bağlı Hizmet:</label>
                         <select name="room_id" class="form-select form-select-solid" required>
                             <option value=""> Bağlı Ürün seçin</option>
                             @foreach ($rooms as $room)
@@ -39,7 +29,7 @@
 
                     
                     <div class="fv-row mb-7">
-                        <label class="form-label"> Resim Ekle:</label>
+                        <label class="form-label"> Logo Ekle:</label>
                         <input type="file" name="photo_img" class="form-control form-control-solid" accept="image/*"/>
                     </div>
                    

@@ -2,10 +2,10 @@
 <div data-kt-stepper-element="content">
     <div class="w-100 text-center">
         <!--begin::Heading-->
-        <h1 class="fw-bold text-dark mb-3">Reservation Complated!</h1>
+        <h1 class="fw-bold text-dark mb-3"> Yeni Kira Oluşturacak!</h1>
         <!--end::Heading-->
         <!--begin::Description-->
-        <div class="text-muted fw-semibold fs-3">Reservation information has been sent to the customer's email address.</div>
+        <div class="text-muted fw-semibold fs-3"> Gereken Bilgileri tamamlandı  </div>
         <!--end::Description-->
         <!--begin::Illustration-->
         <div class="text-center px-4 py-15">

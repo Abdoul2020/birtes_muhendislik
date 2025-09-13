@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Traits;
+
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -17,57 +19,59 @@ trait UploadImage
      * @return string|null
      */
     public function createImage(array $params): ?string
-{
-    $name = $params['name'];
-    $dir = rtrim($params['dir'], '/'); // Klasör yolunu düzelt
-    $publicDir = public_path('storage/' . $dir); // Fiziksel olarak kaydedileceği dizin
+    {
+        $name = $params['name'];
+        $dir = rtrim($params['dir'], '/'); // Klasör yolunu düzelt
+        $publicDir = public_path('storage/' . $dir); // Fiziksel olarak kaydedileceği dizin
 
-    $file = $params['file'];
-    $resize = $params['resize'] ?? null;
-    $rm = $params['rm'] ?? null;
-    $format = $params['format'] ?? 'webp';
 
-    try {
-        // Create directory if not exists
-        if (!File::exists($publicDir)) {
-            File::makeDirectory($publicDir, 0777, true, true);
-        }
 
-        $imagePath = $dir . '/' . $name . ".$format"; // Veritabanına kaydedilecek yol
-        $fullImagePath = $publicDir . '/' . $name . ".$format"; // Fiziksel dosya yolu
+        $file = $params['file'];
+        $resize = $params['resize'] ?? null;
+        $rm = $params['rm'] ?? null;
+        $format = $params['format'] ?? 'webp';
 
-        // Check if the file exists and delete
-        if (File::exists($fullImagePath)) {
-            unlink($fullImagePath);
-        }
+        try {
+            // Create directory if not exists
+            if (!File::exists($publicDir)) {
+                File::makeDirectory($publicDir, 0777, true, true);
+            }
 
-        // If file is provided
-        if ($file !== null) {
-            if (str_starts_with($file, 'data:image')) {
-                $img = Image::make($file)->encode($format, 50);
+            $imagePath = $dir . '/' . $name . ".$format"; // Veritabanına kaydedilecek yol
+            $fullImagePath = $publicDir . '/' . $name . ".$format"; // Fiziksel dosya yolu
+
+            // Check if the file exists and delete
+            if (File::exists($fullImagePath)) {
+                unlink($fullImagePath);
+            }
+
+            // If file is provided
+            if ($file !== null) {
+                if (str_starts_with($file, 'data:image')) {
+                    $img = Image::make($file)->encode($format, 50);
+                } else {
+                    $img = Image::make($file->getRealPath())->encode($format, 50);
+                }
+
+                if ($resize['w'] !== null || $resize['h'] !== null) {
+                    $img->resize($resize['w'], $resize['h'], fn($constraint) => $constraint->aspectRatio());
+                }
+
+                if (!$img->save($fullImagePath)) {
+                    throw new \Exception('Error saving image');
+                }
+            } elseif ($rm === '1' && $file === null) {
+                $imagePath = 'uploads/placeholder.jpg'; // Placeholder kullanımı
             } else {
-                $img = Image::make($file->getRealPath())->encode($format, 50);
+                $imagePath = File::exists($fullImagePath) ? $imagePath : null;
             }
 
-            if ($resize['w'] !== null || $resize['h'] !== null) {
-                $img->resize($resize['w'], $resize['h'], fn($constraint) => $constraint->aspectRatio());
-            }
+            return $imagePath; // Veritabanına kaydedilecek yolu döndür
 
-            if (!$img->save($fullImagePath)) {
-                throw new \Exception('Error saving image');
-            }
-        } elseif ($rm === '1' && $file === null) {
-            $imagePath = 'uploads/placeholder.jpg'; // Placeholder kullanımı
-        } else {
-            $imagePath = File::exists($fullImagePath) ? $imagePath : null;
+        } catch (\Exception $e) {
+            return null; // Hata durumunda null döner
         }
-
-        return $imagePath; // Veritabanına kaydedilecek yolu döndür
-
-    } catch (\Exception $e) {
-        return null; // Hata durumunda null döner
     }
-}
 
 
     /**

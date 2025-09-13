@@ -27,13 +27,13 @@ final class storylineTable extends PowerGridComponent
         $this->showCheckBox();
 
         return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
-            Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
+            // Exportable::make('export')
+            //     ->striped()
+            //     ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+            // Header::make()->showSearchInput(),
+            // Footer::make()
+            //     ->showPerPage()
+            //     ->showRecordCount(),
         ];
     }
 
@@ -123,24 +123,27 @@ final class storylineTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
+            Column::make('Id', 'id')->hidden(true, false),
             Column::make('Header', 'header')
+            ->hidden(true, false)
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Header title', 'header_title')
+            Column::make('Açıklama Başlığı', 'header_title')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Storyline description', 'storyline_description')
+            Column::make('Açıklama', 'storyline_description')
+            ->hidden(true, false)
                 ->sortable()
                 ->searchable(),
 
             Column::make('Placefor', 'placefor')
+            ->hidden(true, false)
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Room id', 'room_id'),
+            Column::make('Hizmet id', 'room_id')->hidden(true, false),
             Column::make('Created at', 'created_at_formatted', 'created_at')
             ->hidden(true, false)
                 ->sortable(),

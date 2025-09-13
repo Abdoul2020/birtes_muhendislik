@@ -1,6 +1,6 @@
 <x-default-layout>
     <div class="container mt-5">
-        <h2 class="mb-4"> Resim Galerisi Güncelle</h2>
+        <h2 class="mb-4"> Referans Güncelle</h2>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -23,25 +23,14 @@
             @method('PATCH')
 
             <div class="mb-3">
-                <label class="required form-label"> Resim Adı:</label>
+                <label class="required form-label"> Referans Adı:</label>
                 <input type="text" name="image_or_video_name" class="form-control" placeholder="Enter image or video name" value="{{ $photovideo->name }}" required/>
             </div>
 
-            <div class="mb-3">
-                <label class="required form-label">Yer:</label>
-                <select name="place_for" class="form-select" required>
-                    <option value="">Bağlı Ülke Seçin</option>
-                    <option value="Türkiye" @selected($photovideo->place_for == 'Türkiye')>Türkiye</option>
-                    <option value="Turkmenistan" @selected($photovideo->place_for == 'Turkmenistan')>Turkmenistan</option>
-                    <option value="Almanya" @selected($photovideo->place_for == 'Almanya')>Almanya</option>
-                    <option value="Rusya" @selected($photovideo->place_for == 'Rusya')>Rusya</option>
-
-                    <option value="All" @selected($photovideo->place_for == 'All')>Tüm Ülke</option>
-                </select>
-            </div>
+            
 
             <div class="mb-3">
-                <label class="required form-label">Bağlı Ürün:</label>
+                <label class="required form-label">Bağlı Hizmet:</label>
                 <select name="room_id" class="form-select" required>
                     <option value=""> Bağlı Ürün Seçin</option>
                     @foreach ($rooms as $room)

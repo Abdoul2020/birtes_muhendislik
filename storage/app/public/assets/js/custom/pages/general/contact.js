@@ -63,7 +63,7 @@ var KTContactApply = function () {
                     html: 'Your selected - <b>"' + selectedlocation + ' - ' + result.latlng + '"</b>.',
                     icon: "success",
                     buttonsStyling: false,
-                    confirmButtonText: "Ok, got it!",
+                    confirmButtonText: "Tamam!",
                     customClass: {
                         confirmButton: "btn btn-primary"
                     }
@@ -153,7 +153,7 @@ var KTContactApply = function () {
 								text: "Form has been successfully submitted!",
 								icon: "success",
 								buttonsStyling: false,
-								confirmButtonText: "Ok, got it!",
+								confirmButtonText: "Tamam!",
 								customClass: {
 									confirmButton: "btn btn-primary"
 								}
@@ -173,7 +173,7 @@ var KTContactApply = function () {
 							text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
 							icon: "error",
 							buttonsStyling: false,
-							confirmButtonText: "Ok, got it!",
+							confirmButtonText: "Tamam!",
 							customClass: {
 								confirmButton: "btn btn-primary"
 							}

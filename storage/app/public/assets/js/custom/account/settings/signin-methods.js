@@ -98,7 +98,7 @@ var KTAccountSettingsSigninMethods = function () {
                         text: "Sent password reset. Please check your email",
                         icon: "success",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn font-weight-bold btn-light-primary"
                         }
@@ -112,7 +112,7 @@ var KTAccountSettingsSigninMethods = function () {
                         text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn font-weight-bold btn-light-primary"
                         }
@@ -186,7 +186,7 @@ var KTAccountSettingsSigninMethods = function () {
                         text: "Sent password reset. Please check your email",
                         icon: "success",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn font-weight-bold btn-light-primary"
                         }
@@ -200,7 +200,7 @@ var KTAccountSettingsSigninMethods = function () {
                         text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn font-weight-bold btn-light-primary"
                         }

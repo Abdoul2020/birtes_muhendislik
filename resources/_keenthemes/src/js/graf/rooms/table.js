@@ -344,7 +344,7 @@ var RoomList = function () {
                             text: "Selected customers was not deleted.",
                             icon: "error",
                             buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
+                            confirmButtonText: "Tamam!",
                             customClass: {
                                 confirmButton: "btn fw-bold btn-primary",
                             }

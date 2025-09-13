@@ -30,7 +30,9 @@ class SignatureController extends Controller
      */
     public function list()
     {
+
         return view('pages.signature.table');
+        
     }
 
 

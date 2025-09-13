@@ -23,6 +23,10 @@ class SocialmadiaController extends Controller
     // Create method
     public function create(Request $request)
     {
+
+
+
+        $request->mergeIfMissing(['place' => '1']);
         // Validate the incoming request
         $validatedData = $request->validate([
             'platform' => 'required|string',
@@ -66,7 +70,9 @@ class SocialmadiaController extends Controller
 
     public function edit($id)
     {
+        
         $record = SocialMedia::findOrFail($id);
+
         // dd($record);
         return view('pages.socialmedia._edit', [
             'record' => $record,
@@ -79,6 +85,9 @@ class SocialmadiaController extends Controller
     public function update(Request $request, $id)
     {
         // Validate the incoming request
+
+        $request->mergeIfMissing(['place' => '1']);
+
         $request->validate([
             'platform' => 'required|string',
             'place' => 'required|string',

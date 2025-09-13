@@ -112,7 +112,7 @@ var KTAccountSettingsProfileDetails = function () {
                         text: "Thank you! You've updated your basic info",
                         icon: "success",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn fw-bold btn-light-primary"
                         }
@@ -123,7 +123,7 @@ var KTAccountSettingsProfileDetails = function () {
                         text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn fw-bold btn-light-primary"
                         }

@@ -7,7 +7,7 @@
             <!--begin::Modal header-->
             <div class="modal-header">
                 <!--begin::Modal title-->
-                <h2>Create Reservation</h2>
+                <h2> İletişim Ekle</h2>
                 <!--end::Modal title-->
                 <!--begin::Close-->
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -30,37 +30,41 @@
                     @csrf
                     <!--begin::Platform input-->
                     <div class="mb-7">
-                        <label for="platform" class="form-label">Platform</label>
+                        <label for="platform" class="form-label"> iletişim Ekle </label>
                         <select class="form-select" id="platform" name="platform" required>
-                            <option value="">Select Platform</option>
+                            <option value=""> İletişim Ekle</option>
                             <option value="instagram">Instagram</option>
                             <option value="youtube">Youtube</option>
-                            <option value="snapchat">SnapChat</option>
                             <option value="whatsap">Whatsap</option>
-                            <option value="tiktok">TikTok</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="eposta">E-posta</option>
+                            <option value="ofistelefon">Ofis Telefonu</option>
+                            <option value="ceptelefon">Cep Telefonu</option>
+                            <option value="ofisadres">Ofis Adres</option>
+                            <option value="depoadres">Depo Adres</option>
                         </select>
                     </div>
                     <!--end::Platform input-->
                     <!--begin::Place input-->
-                    <div class="mb-7">
+                    <!-- <div class="mb-7">
                         <label for="place" class="form-label">Place</label>
                         <select class="form-select" id="place" name="place" required>
                             <option value="">Select Place</option>
                             <option value="dubai">Dubai</option>
                             <option value="abu_dhabi">Abu Dhabi</option>
                         </select>
-                    </div>
+                    </div> -->
                     <!--end::Place input-->
                     <!--begin::Username input-->
                     <div class="mb-7">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+                        <label for="username" class="form-label"> İletişim</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="iletişim biligisi" required>
                     </div>
                     <!--end::Username input-->
                     <!--begin::Actions-->
                     <div class="text-center pt-15">
-                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">İptal</button>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
                     </div>
                     <!--end::Actions-->
                 </form>

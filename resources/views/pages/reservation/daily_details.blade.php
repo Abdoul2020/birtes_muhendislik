@@ -116,6 +116,8 @@
                                         <!-- <th class="">Players : </th> -->
                                         <th class=""> Toplam Ücret : </th>
                                         <th class=""> Oluşturma Tarihi : </th>
+                                        <th> Sözleşmeyi gör: </th>
+
 
                                     </tr>
                                 </thead>
@@ -152,11 +154,12 @@
                                             </td> -->
 
                                         <td>
-                                            <a href="{{ route('admin.reservations.edit', ['reservation' => $reservation->id]) }}"
+
+                                            <!-- <a href="{{ route('admin.reservations.edit', ['reservation' => $reservation->id]) }}"
                                                 class="btn btn-small btn-primary"
                                                 style="background: #47be7d; padding:5px 8px">
                                                 <i class="fas fa-edit"></i>
-                                            </a>
+                                            </a> -->
 
                                             <form
                                                 action="{{ route('admin.reservations.destroy', ['reservation' => $reservation->id]) }}"
@@ -189,7 +192,23 @@
                                             @endif
                                         </td>
 
-                                        <td>{{ $reservation->created_at->format('d/m/Y') }}</td>
+                                        <td>{{ $reservation->reservation_date->format('d/m/Y') }}</td>
+
+                                        <td>
+                                            @php
+                                            $file = public_path('storage/' . $reservation->promotion_code);
+                                            @endphp
+
+                                            @if (File::exists($file))
+                                            <a href="{{ asset($reservation->promotion_code) }}"
+                                                target="_blank"
+                                                style="color: blue; text-decoration: underline;">
+                                                indir
+                                            </a>
+                                            @else
+                                            yok
+                                            @endif
+                                        </td>
                                     </tr>
                                     @endforeach
 
@@ -231,8 +250,6 @@
     <script src="https://cdn.datatables.net/plug-ins/1.10.20/sorting/turkish-string.js"></script>
 
     <script>
-
-        
         const turkishLang = {
             language: {
 

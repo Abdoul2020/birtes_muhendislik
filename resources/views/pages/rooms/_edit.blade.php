@@ -84,7 +84,7 @@
                             <!--begin::Input group-->
                             <div class="row g-9">
                                 <!--begin::Col First Name -->
-                                <div class="col-md-3 fv-row">
+                                <div class="col-md-6 fv-row">
                                     <div class="form-floating mb-7 fv-row">
                                         <input name="title" type="text"
                                                class="form-control form-control-solid" id="title"
@@ -93,42 +93,20 @@
                                     </div>
                                 </div>
                                 <!--end::Col-->
+
+
                                 <!--begin::Col Last Name -->
-                                <div class="col-md-3 fv-row">
+                                <div class="col-md-6 fv-row">
                                     <div class="form-floating mb-7 fv-row">
                                         <input name="slug" type="text"
                                                class="form-control form-control-solid" id="slug"
                                                value="{{ $room->slug }}" required/>
-                                        <label class="required " for="slug">Slug</label>
+                                        <label class="required " for="slug">uzantı</label>
                                     </div>
                                 </div>
                                 <!--end::Col-->
-                                <!--begin::Col Email-->
-                                <div class="col-md-3 fv-row">
-                                    <div class="form-floating mb-7 fv-row">
-                                        <select name="place_id" id="place_id"
-                                                class="form-select form-select-solid" data-control="select2"
-                                                data-placeholder="Place Select" data-allow-clear="true"
-                                                required>
-                                            <option></option>
-                                            @foreach($places as $place)
-                                                <option value="{{ $place->id }}" @selected($room->place_id == $place->id)>{{ $place->title }}</option>
-                                            @endforeach
-                                        </select>
-                                        <label class="required " for="place_id">Yer</label>
-
-                                    </div>
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col Phone-->
-                                <div class="col-md-3 fv-row">
-                                    <div class="form-floating mb-7 fv-row">
-                                        <input name="order" type="number" min="1" max="10"
-                                               class="form-control form-control-solid" id="order"
-                                               value="{{ $room->order }}" required/>
-                                        <label class="required " for="order">Sıra</label>
-                                    </div>
-                                </div>
+                                
+                                
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->

@@ -81,4 +81,6 @@ class Room extends Model
     public function scopeAbudhabiRooms($query){
         return $query->where('place_id', 2);
     }
+
+    
 }

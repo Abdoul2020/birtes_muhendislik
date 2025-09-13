@@ -27,13 +27,13 @@ final class SocialTable extends PowerGridComponent
         $this->showCheckBox();
 
         return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
-            Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
+            // Exportable::make('export')
+            //     ->striped()
+            //     ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+            // Header::make()->showSearchInput(),
+            // Footer::make()
+            //     ->showPerPage()
+            //     ->showRecordCount(),
         ];
     }
 
@@ -91,11 +91,11 @@ final class SocialTable extends PowerGridComponent
             ->addColumn('platform')
 
             /** Example of custom column using a closure **/
-            ->addColumn('platform_lower', fn (SocialMedia $model) => strtolower(e($model->platform)))
+            ->addColumn('platform_lower', fn(SocialMedia $model) => strtolower(e($model->platform)))
 
             ->addColumn('placefor')
             ->addColumn('username')
-            ->addColumn('created_at_formatted', fn (SocialMedia $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn(SocialMedia $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -115,16 +115,18 @@ final class SocialTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('Platform', 'platform')
+            Column::make('Id', 'id')
+            ->hidden(true, false),
+            Column::make('İletişim', 'platform')
                 ->sortable()
                 ->searchable(),
 
             Column::make('Placefor', 'placefor')
+                ->hidden(true, false)
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Username', 'username')
+            Column::make('Bilgi', 'username')
                 ->sortable()
                 ->searchable(),
 

@@ -376,7 +376,7 @@ var KTAppCalendar = function () {
                                 text: "New event added to calendar!",
                                 icon: "success",
                                 buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
+                                confirmButtonText: "Tamam!",
                                 customClass: {
                                     confirmButton: "btn btn-primary"
                                 }
@@ -430,7 +430,7 @@ var KTAppCalendar = function () {
                             text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                             icon: "error",
                             buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
+                            confirmButtonText: "Tamam!",
                             customClass: {
                                 confirmButton: "btn btn-primary"
                             }
@@ -495,7 +495,7 @@ var KTAppCalendar = function () {
                                 text: "New event added to calendar!",
                                 icon: "success",
                                 buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
+                                confirmButtonText: "Tamam!",
                                 customClass: {
                                     confirmButton: "btn btn-primary"
                                 }
@@ -552,7 +552,7 @@ var KTAppCalendar = function () {
                             text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                             icon: "error",
                             buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
+                            confirmButtonText: "Tamam!",
                             customClass: {
                                 confirmButton: "btn btn-primary"
                             }
@@ -618,7 +618,7 @@ var KTAppCalendar = function () {
                         text: "Your event was not deleted!.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn btn-primary",
                         }
@@ -664,7 +664,7 @@ var KTAppCalendar = function () {
                         text: "Your form has not been cancelled!.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn btn-primary",
                         }
@@ -700,7 +700,7 @@ var KTAppCalendar = function () {
                         text: "Your form has not been cancelled!.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn btn-primary",
                         }

@@ -57,7 +57,7 @@ var KTCreateApp = function () {
 							text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
 							icon: "error",
 							buttonsStyling: false,
-							confirmButtonText: "Ok, got it!",
+							confirmButtonText: "Tamam!",
 							customClass: {
 								confirmButton: "btn btn-light"
 							}
@@ -114,7 +114,7 @@ var KTCreateApp = function () {
 						text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
 						icon: "error",
 						buttonsStyling: false,
-						confirmButtonText: "Ok, got it!",
+						confirmButtonText: "Tamam!",
 						customClass: {
 							confirmButton: "btn btn-light"
 						}

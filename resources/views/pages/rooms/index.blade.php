@@ -51,6 +51,7 @@
 
                 
                     @livewire('power-grid.room-table')
+                    
                     <!--end::Table-->
 
                     <div class="overlay-layer card-rounded bg-dark bg-opacity-20 d-none">

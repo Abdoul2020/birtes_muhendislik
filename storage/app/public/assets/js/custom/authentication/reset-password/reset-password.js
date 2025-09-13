@@ -61,7 +61,7 @@ var KTAuthResetPassword = function() {
                             text: "We have send a password reset link to your email.",
                             icon: "success",
                             buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
+                            confirmButtonText: "Tamam!",
                             customClass: {
                                 confirmButton: "btn btn-primary"
                             }
@@ -83,7 +83,7 @@ var KTAuthResetPassword = function() {
                         text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn btn-primary"
                         }

@@ -1,27 +1,27 @@
 <x-auth-layout>
 
     <!--begin::Form-->
-    <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="/admin" action="login">
+    <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="/admin/about" action="login">
         @csrf
         <!--begin::Heading-->
         <div class="text-center mb-11">
 
-            <!-- <div>
-                <img src="{{ image('logos/vinc.png') }}" alt="Blackout" style="max-width: 100px">
-            </div> -->
+            <div>
+                <img src="{{ image('logos/vinc.png') }}" alt="Blackout" style="max-width: 200px">
+            </div>
             
             <!--begin::Title-->
 
-             <h1 class="text-dark fw-bolder mb-3">
-                Baba Vinç
-            </h1> 
+             <!-- <h1 class="text-dark fw-bolder mb-3">
+                Birtes Mühendislik
+            </h1>  -->
 
             <!--end::Title-->
 
             <!--begin::Subtitle-->
-            <div class="text-gray-500 fw-semibold fs-6 mt-5">
+            <!-- <div class="text-gray-500 fw-semibold fs-6 mt-5">
                 Giriş Yap
-            </div>
+            </div> -->
             <!--end::Subtitle--->
         </div>
         <!--begin::Heading-->

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\Room;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
 class kvkkpage extends Controller
@@ -12,7 +15,19 @@ class kvkkpage extends Controller
      */
     public function index()
     {
-        return view('site.kvkk',);
+        $products = Room::all();
+        $about_text = About::where('place_id', 1)->first();
+        $contacts= SocialMedia::all();
+
+
+        
+        return view('site.kurumsal.kvkk',[
+            'services'=> $products,
+            'about_text'=> $about_text,
+            'contacts' => $contacts,
+
+        ]);
+
     }
 
     /**

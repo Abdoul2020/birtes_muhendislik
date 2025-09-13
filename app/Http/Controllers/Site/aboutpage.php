@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\Room;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
 class aboutpage extends Controller
@@ -12,8 +15,19 @@ class aboutpage extends Controller
      */
     public function index()
     {
+
+        $about_text = About::where('place_id', 1)->first();
+        $products = Room::all();
+        $contacts= SocialMedia::all();
+
+
+
         
-        return view('site.about',);
+        return view('site.kurumsal.aboutus',[
+            'services'=> $products,
+            'about_text'=> $about_text,
+            'contacts' => $contacts,
+        ]);
     }
 
     /**

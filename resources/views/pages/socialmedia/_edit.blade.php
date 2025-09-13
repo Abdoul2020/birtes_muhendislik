@@ -14,7 +14,7 @@
                             <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"/>
                         </svg>
                     </span>
-                    UPDATE Socail Media
+                    İletişim Güncelle
                 </button>
                 <!--end::Primary button-->
             </div>
@@ -57,40 +57,31 @@
                             <!--begin::Input group-->
                             <div class="row g-9">
                                 <!--begin::Col Platform-->
-                                <div class="col-md-3 fv-row">
+                                <div class="col-md-6 fv-row">
                                     <div class="form-floating mb-7 fv-row">
                                         <select name="platform" id="platform" class="form-select form-select-solid" required>
-                                            <option value="">Select Platform</option>
-
+                                            <option value=""> İletişim Seç</option>
                                             <option value="instagram" {{ $record->platform == 'instagram' ? 'selected' : '' }}>Instagram</option>
                                             <option value="youtube" {{ $record->platform == 'youtube' ? 'selected' : '' }}>Youtube</option>
-                                            <option value="snapchat" {{ $record->platform == 'snapchat' ? 'selected' : '' }}>SnapChat</option>
                                             <option value="whatsap" {{ $record->platform == 'whatsap' ? 'selected' : '' }}>Whatsap</option>
-                                            <option value="tiktok" {{ $record->platform == 'tiktok' ? 'selected' : '' }}>TikTok</option>
+                                            <option value="facebook" {{ $record->platform == 'facebook' ? 'selected' : '' }}>Facebook</option>
+                                            <option value="eposta" {{ $record->platform == 'eposta' ? 'selected' : '' }}>Facebook</option>
+                                            <option value="ofistelefon" {{ $record->platform == 'ofistelefon' ? 'selected' : '' }}>Ofis Telefonu</option>
+                                            <option value="ceptelefon" {{ $record->platform == 'ceptelefon' ? 'selected' : '' }}>Cep Telefonu</option>
+                                            <option value="ofisadres" {{ $record->platform == 'ofisadres' ? 'selected' : '' }}>Cep Telefonu</option>
+                                            <option value="depoadres" {{ $record->platform == 'depoadres' ? 'selected' : '' }}>Cep Telefonu</option>
                                         </select>
-                                        <label class="required" for="platform">Platform</label>
+                                        <label class="required" for="platform">İletişim</label>
                                     </div>
                                 </div>
                                 <!--end::Col-->
 
-                                <!--begin::Col Place-->
-                                <div class="col-md-3 fv-row">
-                                    <div class="form-floating mb-7 fv-row">
-                                        <select name="place" id="place" class="form-select form-select-solid" required>
-                                            <option value="">Select Place</option>
-                                            <option value="dubai" {{ $record->place == 'dubai' ? 'selected' : '' }}>Dubai</option>
-                                            <option value="abu_dhabi" {{ $record->place == 'abu_dhabi' ? 'selected' : '' }}>Abu Dhabi</option>
-                                        </select>
-                                        <label class="required" for="place">Place</label>
-                                    </div>
-                                </div>
-                                <!--end::Col-->
-
+                               
                                 <!--begin::Col Username-->
-                                <div class="col-md-3 fv-row">
+                                <div class="col-md-6 fv-row">
                                     <div class="form-floating mb-7 fv-row">
                                         <input name="username" type="text" class="form-control form-control-solid" id="username" value="{{ $record->username }}" required/>
-                                        <label class="required" for="username">Username</label>
+                                        <label class="required" for="username">İletişim Bilgisi</label>
                                     </div>
                                 </div>
                                 <!--end::Col-->

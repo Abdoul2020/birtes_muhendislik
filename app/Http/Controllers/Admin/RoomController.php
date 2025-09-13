@@ -30,12 +30,16 @@ class RoomController extends Controller
      */
     public function index()
     {
+
         addJavascriptFile('assets/js/graf.bundle.js');
         addJavascriptFile('assets/js/graf.bundle.js');
         $places = Place::where('status', 1)->get(['id', 'title']);
+
         $rooms = Room::status()
             ->orderBy('order')
             ->get(['id', 'title', 'place_id', 'order', 'status']);
+
+
 
         return view('pages.rooms.index', compact('rooms', 'places'));
     }
@@ -82,6 +86,9 @@ class RoomController extends Controller
         // Handle the status field
         $info['status'] = array_key_exists('status', $info) ? 1 : 0;
         $info['created_by'] = Auth::user()->id; // Assuming you have authenticated users
+
+
+        $info['order'] = $info['order'] ?? 0;
 
         // Save the room to get an ID for image directory
         $room->fill($info)->save();
@@ -132,13 +139,6 @@ class RoomController extends Controller
         return redirect()->route('admin.rooms.index');
     }
 
-
-
-
-
-
-
-
     /**
      * Display the specified resource.
      *
@@ -158,8 +158,8 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
+        
         $room = Room::findOrFail($id);
-
         $rooms = Room::withoutTrashed()->get();
         $places = Place::withoutTrashed()->get();
         $hours = Hour::withoutTrashed()->get();

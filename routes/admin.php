@@ -23,6 +23,15 @@ use App\Http\Controllers\Admin\abdudhabi\FaqController as AbdudhabiFaqController
 use App\Http\Controllers\Admin\VideoPriceController;
 use App\Http\Controllers\Admin\TripadvisorController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\HomeBannerController;
+use App\Http\Controllers\Admin\products\forkliftController;
+use App\Http\Controllers\Admin\products\hiyapvinController;
+use App\Http\Controllers\Admin\products\kulevinController;
+use App\Http\Controllers\Admin\products\mobilvinController;
+use App\Http\Controllers\Admin\products\sepetlivinController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ReferansCategoryController;
+use App\Http\Controllers\Admin\ReferensProjectController;
 
 Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -44,15 +53,134 @@ Route::controller(PriceController::class)->name('prices.')->group(callback: func
 
 
 Route::controller(RoomController::class)->name('rooms.')->group(callback: function () {
-    Route::get('urunler', 'index')->name('index'); //->middleware(['permission:read room']);
-    Route::post('urunler', 'store')->name('store'); //->middleware(['permission:create room']);
-    Route::get('urunler/create', 'create')->name('create'); //->middleware(['permission:create room']);
-    Route::get('urunler/{room}', 'show')->name('show'); //->middleware(['permission:read room']);
-    Route::patch('urunler/{room}', 'update')->name('update'); //->middleware(['permission:update room']);
-    Route::delete('urunler/{room}', 'destroy')->name('destroy'); //->middleware(['permission:delete room']);
-    Route::get('urunler/{room}/edit', 'edit')->name('edit'); //->middleware(['permission:update room']);
+    Route::get('hizmetler', 'index')->name('index'); //->middleware(['permission:read room']);
+    Route::post('hizmetler', 'store')->name('store'); //->middleware(['permission:create room']);
+    Route::get('hizmetler/create', 'create')->name('create'); //->middleware(['permission:create room']);
+    Route::get('hizmetler/{room}', 'show')->name('show'); //->middleware(['permission:read room']);
+    Route::patch('hizmetler/{room}', 'update')->name('update'); //->middleware(['permission:update room']);
+    Route::delete('hizmetler/{room}', 'destroy')->name('destroy'); //->middleware(['permission:delete room']);
+    Route::get('hizmetler/{room}/edit', 'edit')->name('edit'); //->middleware(['permission:update room']);
     Route::post('geturuns/{place_id}', 'getRooms')->name('getRooms');
 });
+
+
+//project done
+Route::controller(ProjectController::class)->name('projects.')->group(callback: function () {
+    Route::get('projeler', 'index')->name('index'); 
+    Route::post('projeler', 'store')->name('store'); 
+    Route::get('projeler/create', 'create')->name('create'); 
+    Route::get('projeler/{room}', 'show')->name('show'); 
+    Route::patch('projeler/{room}', 'update')->name('update'); 
+    Route::delete('projeler/{room}', 'destroy')->name('destroy'); 
+    Route::get('projeler/{room}/edit', 'edit')->name('edit');
+    Route::post('getproject/{place_id}', 'getRooms')->name('getRooms');
+});
+// end of projects done
+
+// referens main kategori
+Route::controller(  ReferansCategoryController ::class)->name('referensmain.')->group(callback: function () {
+    Route::get('anakategori', 'index')->name('index'); 
+    Route::post('anakategori', 'store')->name('store'); 
+    Route::get('anakategori/create', 'create')->name('create'); 
+    Route::get('anakategori/{room}', 'show')->name('show'); 
+    Route::patch('anakategori/{room}', 'update')->name('update'); 
+    Route::delete('anakategori/{room}', 'destroy')->name('destroy'); 
+    Route::get('anakategori/{room}/edit', 'edit')->name('edit');
+    Route::post('getcategori/{place_id}', 'getRooms')->name('getRooms');
+});
+// end of main kategori
+
+// referens Project
+Route::controller(  ReferensProjectController ::class)->name('referensproject.')->group(callback: function () {
+    Route::get('referensprojeleri', 'index')->name('index'); 
+    Route::post('referensprojeleri', 'store')->name('store'); 
+    Route::get('referensprojeleri/create', 'create')->name('create'); 
+    Route::get('referensprojeleri/{room}', 'show')->name('show'); 
+    Route::patch('referensprojeleri/{room}', 'update')->name('update'); 
+    Route::delete('referensprojeleri/{room}', 'destroy')->name('destroy'); 
+    Route::get('referensprojeleri/{room}/edit', 'edit')->name('edit');
+    Route::post('getreferensproject/{place_id}', 'getRooms')->name('getRooms');
+});
+// end of referens Project
+
+// home oage banner
+
+// referens Project
+Route::controller(  HomeBannerController ::class)->name('homebanner.')->group(callback: function () {
+    Route::get('anasayfa-banner', 'index')->name('index'); 
+    Route::post('anasayfa-banner', 'store')->name('store'); 
+    Route::get('anasayfa-banner/create', 'create')->name('create'); 
+    Route::get('anasayfa-banner/{id}', 'show')->name('show'); 
+    Route::patch('anasayfa-banner/{id}', 'update')->name('update'); 
+    Route::delete('anasayfa-banner/{id}', 'destroy')->name('destroy'); 
+    Route::get('anasayfa-banner/{id}/edit', 'edit')->name('edit');
+    Route::post('gethomepagebnner/{place_id}', 'getRooms')->name('getRooms');
+});
+
+// end of home page banner
+
+
+
+
+// products list here
+Route::controller(mobilvinController::class)->name('products.')->group(callback: function () {
+    Route::get('mobilvincler', 'index')->name('index');
+    Route::post('mobilvincler', 'store')->name('store'); //->middleware(['permission:create room']);
+    Route::get('mobilvincler/create', 'create')->name('create'); //->middleware(['permission:create room']);
+    Route::get('mobilvincler/{room}', 'show')->name('show'); //->middleware(['permission:read room']);
+    Route::patch('mobilvincler/{room}', 'update')->name('update'); //->middleware(['permission:update room']);
+    Route::delete('mobilvincler/{room}', 'destroy')->name('destroy'); //->middleware(['permission:delete room']);
+    Route::get('mobilvincler/{room}/edit', 'edit')->name('edit'); //->middleware(['permission:update room']);
+    Route::post('geturuns/{place_id}', 'getRooms')->name('getRooms');
+});
+
+Route::controller(kulevinController::class)->name('kule.')->group(callback: function () {
+    Route::get('kulevincler', 'index')->name('index'); //->middleware(['permission:read room']);
+    Route::post('kulevincler', 'store')->name('store'); //->middleware(['permission:create room']);
+    Route::get('kulevincler/create', 'create')->name('create'); //->middleware(['permission:create room']);
+    Route::get('kulevincler/{room}', 'show')->name('show'); //->middleware(['permission:read room']);
+    Route::patch('kulevincler/{room}', 'update')->name('update'); //->middleware(['permission:update room']);
+    Route::delete('kulevincler/{room}', 'destroy')->name('destroy'); //->middleware(['permission:delete room']);
+    Route::get('kulevincler/{room}/edit', 'edit')->name('edit'); //->middleware(['permission:update room']);
+    Route::post('geturuns/{place_id}', 'getRooms')->name('getRooms');
+});
+
+
+Route::controller(hiyapvinController::class)->name('hiyap.')->group(callback: function () {
+    Route::get('hiyapvincler', 'index')->name('index');
+    Route::post('hiyapvincler', 'store')->name('store');
+    Route::get('hiyapvincler/create', 'create')->name('create');
+    Route::get('hiyapvincler/{room}', 'show')->name('show');
+    Route::patch('hiyapvincler/{room}', 'update')->name('update');
+    Route::delete('hiyapvincler/{room}', 'destroy')->name('destroy');
+    Route::get('hiyapvincler/{room}/edit', 'edit')->name('edit');
+    Route::post('geturuns/{place_id}', 'getRooms')->name('getRooms');
+});
+
+Route::controller(sepetlivinController::class)->name('sepet.')->group(callback: function () {
+    Route::get('sepetlivinc', 'index')->name('index');
+    Route::post('sepetlivinc', 'store')->name('store');
+    Route::get('sepetlivinc/create', 'create')->name('create');
+    Route::get('sepetlivinc/{room}', 'show')->name('show');
+    Route::patch('sepetlivinc/{room}', 'update')->name('update');
+    Route::delete('sepetlivinc/{room}', 'destroy')->name('destroy');
+    Route::get('sepetlivinc/{room}/edit', 'edit')->name('edit');
+    Route::post('geturuns/{place_id}', 'getRooms')->name('getRooms');
+});
+
+Route::controller(forkliftController::class)->name('forklift.')->group(callback: function () {
+    Route::get('forklift', 'index')->name('index');
+    Route::post('forklift', 'store')->name('store');
+    Route::get('forklift/create', 'create')->name('create');
+    Route::get('forklift/{room}', 'show')->name('show');
+    Route::patch('forklift/{room}', 'update')->name('update');
+    Route::delete('forklift/{room}', 'destroy')->name('destroy');
+    Route::get('forklift/{room}/edit', 'edit')->name('edit');
+    Route::post('geturuns/{place_id}', 'getRooms')->name('getRooms');
+});
+
+
+
 
 
 Route::controller(HourController::class)->name('hours.')->group(callback: function () {
@@ -90,7 +218,6 @@ Route::controller(ReservationController::class)->name('reservations.')->group(ca
     Route::delete('reservations/{item}/force', 'forceDelete')->name('forceDelete'); //->middleware(['permission:delete reservation']);
     Route::get('reservations/{reservation}/edit', 'edit')->name('edit');
     Route::get('/get-archives', [ReservationController::class, 'fetchArchives'])->name('get.archives');
-
 });
 
 
@@ -136,7 +263,7 @@ Route::controller(CommentController::class)->name('comment.')->group(function ()
 });
 
 //tripadvisor controller
-    Route::controller(TripadvisorController::class)->name('tripadvisor.')->group(function () {
+Route::controller(TripadvisorController::class)->name('tripadvisor.')->group(function () {
     Route::get('tripadvisor', 'index')->name('list');
     Route::post('tripadvisor', 'store')->name('store'); //->middleware(['permission:create room']);
     Route::get('tripadvisor/create', 'create')->name('create'); //->middleware(['permission:create room']);
@@ -216,14 +343,14 @@ Route::controller(contactController::class)->name('contact.')->group(function ()
 
 
 Route::controller(photovideoController::class)->name('photos_videos.')->group(function () {
-    Route::get('urun_resimleri', 'index')->name('list');
-    Route::post('urun_resimleri', 'store')->name('store'); //->middleware(['permission:create room']);
-    Route::get('urun_resimleri/create', 'create')->name('create'); //->middleware(['permission:create room']);
-    Route::post('urun_resimleri/create', 'store')->name('create.store'); // Add this line to handle form submission
-    Route::get('urun_resimleri/{id}', 'show')->name('show'); //->middleware(['permission:read room']);
-    Route::patch('urun_resimleri/{id}', 'update')->name('update'); //->middleware(['permission:update room']);
-    Route::delete('urun_resimleri/{id}', 'destroy')->name('destroy'); //->middleware(['permission:delete room']);
-    Route::get('urun_resimleri/{id}/edit', 'edit')->name('edit'); //->middleware(['permission:update room']);
+    Route::get('referanslar', 'index')->name('list');
+    Route::post('referanslar', 'store')->name('store'); //->middleware(['permission:create room']);
+    Route::get('referanslar/create', 'create')->name('create'); //->middleware(['permission:create room']);
+    Route::post('referanslar/create', 'store')->name('create.store'); // Add this line to handle form submission
+    Route::get('referanslar/{id}', 'show')->name('show'); //->middleware(['permission:read room']);
+    Route::patch('referanslar/{id}', 'update')->name('update'); //->middleware(['permission:update room']);
+    Route::delete('referanslar/{id}', 'destroy')->name('destroy'); //->middleware(['permission:delete room']);
+    Route::get('referanslar/{id}/edit', 'edit')->name('edit'); //->middleware(['permission:update room']);
 });
 
 
@@ -268,5 +395,5 @@ Route::controller(SignatureController::class)->name('signatures.')->group(callba
 
 
 
-Route::get('/error', fn () => abort(500));
+Route::get('/error', fn() => abort(500));
 require __DIR__ . '/auth.php';

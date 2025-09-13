@@ -21,10 +21,11 @@ return new class extends Migration
             $table->foreignId('room_id')->nullable()->unsigned()->constrained('rooms');
             $table->foreignId('client_info_id')->nullable()->unsigned()->constrained('client_infos');
             $table->foreignId('payment_info_id')->nullable()->unsigned()->constrained('payment_infos');
-            $table->date('reservation_date');
+            $table->date('reservation_date')->nullable();
+            $table->date('reservation_date_return')->nullable();
             $table->foreignId('hour_id')->nullable()->unsigned()->constrained('hours');
-            $table->string('players');
-            $table->string('payment_method');
+            $table->string('players')->nullable();
+            $table->string('payment_method')->nullable();
             $table->string('promotion_code')->nullable();
             $table->string('discount')->nullable();
             $table->text('comment')->nullable();

@@ -23,20 +23,20 @@ final class photovideosTable extends PowerGridComponent
     | Setup Table's general features
     |
     */
-    public function setUp(): array
-    {
-        $this->showCheckBox();
+    // public function setUp(): array
+    // {
+    //     $this->showCheckBox();
 
-        return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
-            Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
-        ];
-    }
+    //     return [
+    //         Exportable::make('export')
+    //             ->striped()
+    //             ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+    //         Header::make()->showSearchInput(),
+    //         Footer::make()
+    //             ->showPerPage()
+    //             ->showRecordCount(),
+    //     ];
+    // }
 
     /*
     |--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ final class photovideosTable extends PowerGridComponent
             ->addColumn('name')
 
             /** Example of custom column using a closure **/
-            ->addColumn('name_lower', fn (PhotoVideo $model) => strtolower(e($model->name)))
+            ->addColumn('name_lower', fn(PhotoVideo $model) => strtolower(e($model->name)))
 
             ->addColumn('placefor')
             ->addColumn('room_id')
@@ -118,7 +118,7 @@ final class photovideosTable extends PowerGridComponent
             })
 
 
-            ->addColumn('created_at_formatted', fn (PhotoVideo $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn(PhotoVideo $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -138,18 +138,20 @@ final class photovideosTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Sıra', 'id'),
-            Column::make('Ürün Adı', 'name')
+            Column::make('Sıra', 'id')
+                ->hidden(true, false),
+            Column::make('Referans', 'name')
                 ->sortable()
                 ->searchable(),
 
             Column::make('Yer', 'placefor')
+                ->hidden(true, false)
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Bağlantılı Ürün', 'room_id'),
+            Column::make('Bağlantılı Ürün', 'room_id') ->hidden(true, false),
             Column::make('Resim', 'photos_img')
-            ->hidden(true, false)
+                ->hidden(true, false)
                 ->sortable()
                 ->searchable(),
             Column::make('Created at', 'created_at_formatted', 'created_at')

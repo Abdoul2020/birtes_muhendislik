@@ -98,7 +98,7 @@ var KTCreateReservation = function () {
                             text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                             icon: "error",
                             buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
+                            confirmButtonText: "Tamam!",
                             customClass: {
                                 confirmButton: "btn btn-light"
                             }
@@ -204,7 +204,7 @@ var KTCreateReservation = function () {
                         text: "Üzgünüz, bazı hatalar tespit edildi. Lütfen tekrar deneyin.",
                         icon: "error",
                         buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
+                        confirmButtonText: "Tamam!",
                         customClass: {
                             confirmButton: "btn btn-light"
                         }
@@ -302,7 +302,7 @@ var KTCreateReservation = function () {
                     room_id: {
                         validators: {
                             notEmpty: {
-                                message: 'Room is required'
+                                message: 'Ürün Seçimi Gerekli'
                             }
                         }
                     }
