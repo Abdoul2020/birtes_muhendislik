@@ -11,7 +11,7 @@
             type="image/x-icon">
         <link href="../assets/images/favicon.png" rel="shortcut icon"
             type="image/x-icon">
-        <title>Black Out | Scary Room</title>
+        <title>Birtes Mühendislik | Scary Room</title>
         
         <!--[if mso]>
     <xml>
@@ -190,7 +190,7 @@
     <body style="margin: 80px auto;">
 
         <div lang="en" style="display:none;font-size:0;line-height:0;">
-            Black Out
+            Birtes Mühendislik
         </div>
 
         <table align="center" border="0" cellpadding="0" cellspacing="0"

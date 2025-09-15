@@ -9,22 +9,22 @@
 
 @section('meta_tags')
     <!-- Primary Meta Tags -->
-    <title>{{ $datas->seo_title }} | Black Out Escape Rooms</title>
-    <meta name="title" content="{{ $datas->seo_title }} | Black Out Escape Rooms">
+    <title>{{ $datas->seo_title }} | Birtes Mühendislik Escape Rooms</title>
+    <meta name="title" content="{{ $datas->seo_title }} | Birtes Mühendislik Escape Rooms">
     <meta name="description" content="{{ $datas->seo_description }}">
     <meta name="keywords" content="{{ $datas->seo_keywords }}, escape rooms, live actor escape games, horror escape rooms, {{ $datas->seo_title }} escape room">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url("https://black-out.ae/rooms/$datas->id") }}">
-    <meta property="og:title" content="{{ $datas->seo_title }} | Black Out Escape Rooms">
+    <meta property="og:title" content="{{ $datas->seo_title }} | Birtes Mühendislik Escape Rooms">
     <meta property="og:description" content="{{ $datas->seo_description }}">
     <meta property="og:image" content="{{ asset($datas->banner) }}">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url("https://black-out.ae/rooms/$datas->id") }}">
-    <meta property="twitter:title" content="{{ $datas->seo_title }} | Black Out Escape Rooms">
+    <meta property="twitter:title" content="{{ $datas->seo_title }} | Birtes Mühendislik Escape Rooms">
     <meta property="twitter:description" content="{{ $datas->seo_description }}">
     <meta property="twitter:image" content="{{ asset($datas->banner) }}">
 
@@ -116,7 +116,7 @@
             if (isRedImageDay) {
                 dayDiv.dataset.redImage = "true";
                 dayDiv.innerHTML =
-                    `<span><img src="{{ asset('assets/site/images/logoPart/favicon.png') }}" alt="Black Out Best Escape Rooms" style="max-width: 40px;"></span>`;
+                    `<span><img src="{{ asset('assets/site/images/logoPart/favicon.png') }}" alt="Birtes Mühendislik Best Escape Rooms" style="max-width: 40px;"></span>`;
                 dayDiv.style.color = "#950004";
             } else {
                 dayDiv.style.borderBottom = "2px solid #ffff";

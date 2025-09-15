@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Black Out'),
+    'name' => env('APP_NAME', 'Birtes Mühendislik'),
     'PAYMENT_URL' => env('PAYMENT_URL', 'https://api-gateway.ngenius-payments.com/'),
     'SANDBOX_URL' => env('SANDBOX_URL', 'https://api-gateway.sandbox.ngenius-payments.com/'),
     'PAYMENT_REFERENCE_CODE' => env('PAYMENT_REFERENCE_CODE', '70776d83-c1dc-4fb1-84c2-8273dca9a070'),

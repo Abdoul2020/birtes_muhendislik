@@ -48,7 +48,7 @@ final class ReservationTable extends PowerGridComponent
         //        $this->showCheckBox();
 
         return [
-            Exportable::make('Black Out Reservation List')
+            Exportable::make('Birtes Mühendislik Reservation List')
                 ->csvSeparator('|')
                 ->csvDelimiter("'")
                 ->striped('#A6ACCD')->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),

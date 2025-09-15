@@ -8,7 +8,7 @@
     <meta name="x-apple-disable-message-reformatting">
     <link href="../assets/images/favicon.png" rel="icon" type="image/x-icon">
     <link href="../assets/images/favicon.png" rel="shortcut icon" type="image/x-icon">
-    <title>Black Out | Scary Room</title>
+    <title>Birtes Mühendislik | Scary Room</title>
     <!--[if mso]>
     <xml>
         <o:OfficeDocumentSettings>
@@ -185,7 +185,7 @@
 <body style="margin: 80px auto;">
 
     <div lang="en" style="display:none;font-size:0;line-height:0;">
-        Black Out
+        Birtes Mühendislik
     </div>
 
 

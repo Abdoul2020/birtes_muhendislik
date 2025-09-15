@@ -727,7 +727,9 @@ h6 {
 /* count down here */
 
 .facts-section {
+  /* background-image: url('/assets/site/img/about_birtes.webp') !important; */
   background-image: url('/storage/assets/site/img/about_birtes.webp') !important;
+
 
   background-size: cover;
   background-position: center;

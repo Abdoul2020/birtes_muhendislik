@@ -35,7 +35,7 @@ final class SignatureTable extends PowerGridComponent
     public function setUp(): array
     {
         return [
-            Exportable::make('Black Out Price List')
+            Exportable::make('Birtes Mühendislik Price List')
                 ->csvSeparator('|')
                 ->csvDelimiter("'")
                 ->striped('#A6ACCD')->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),

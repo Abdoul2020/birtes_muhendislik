@@ -33,7 +33,7 @@ class FranchiseRequestMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('website@black-out.ae', 'Black Out'),
+            from: new Address('website@black-out.ae', 'Birtes Mühendislik'),
             subject: 'Request Franchise',
         );
     }

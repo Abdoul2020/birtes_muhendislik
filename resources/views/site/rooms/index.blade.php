@@ -9,27 +9,27 @@
 @extends($layout)
 
 
-@section('title','Blackout Rooms')
+@section('title','Birtes Mühendislik Rooms')
 
 @section('meta_tags')
     <!-- Primary Meta Tags -->
-    <title>Scariest Escape Rooms in {{ $location }} | Black Out - Ultimate Horror Adventure</title>
-    <meta name="title" content="Black Out - Scariest Escape Rooms in {{ $location }}">
-    <meta name="description" content="Experience the scariest escape rooms in {{ $location }} with Black Out. Gather your team, solve challenging puzzles, and immerse yourself in thrilling horror adventures with live actors. Perfect for thrill-seekers and team-building activities.">
-    <meta name="keywords" content="escape rooms {{ $location }}, Black Out escape rooms, horror escape rooms, escape rooms UAE, live actor escape games, team building activities {{ $location }}, haunted house {{ $location }}">
+    <title>Scariest Escape Rooms in {{ $location }} | Birtes Mühendislik - Ultimate Horror Adventure</title>
+    <meta name="title" content="Birtes Mühendislik - Scariest Escape Rooms in {{ $location }}">
+    <meta name="description" content="Experience the scariest escape rooms in {{ $location }} with Birtes Mühendislik. Gather your team, solve challenging puzzles, and immerse yourself in thrilling horror adventures with live actors. Perfect for thrill-seekers and team-building activities.">
+    <meta name="keywords" content="escape rooms {{ $location }}, Birtes Mühendislik escape rooms, horror escape rooms, escape rooms UAE, live actor escape games, team building activities {{ $location }}, haunted house {{ $location }}">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://black-out.ae/">
-    <meta property="og:title" content="Black Out - Scariest Escape Rooms in {{ $location }}">
-    <meta property="og:description" content="Discover the scariest escape rooms in {{ $location }}. Black Out offers thrilling horror adventures, live actors, and immersive puzzles for the ultimate escape experience.">
+    <meta property="og:title" content="Birtes Mühendislik - Scariest Escape Rooms in {{ $location }}">
+    <meta property="og:description" content="Discover the scariest escape rooms in {{ $location }}. Birtes Mühendislik offers thrilling horror adventures, live actors, and immersive puzzles for the ultimate escape experience.">
     <meta property="og:image" content="{{ asset('img/logo/haunted-meta-logo.png') }}">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://black-out.ae/">
-    <meta property="twitter:title" content="Black Out - Scariest Escape Rooms in {{ $location }}">
-    <meta property="twitter:description" content="Challenge yourself in the scariest escape rooms in {{ $location }}. Black Out offers horror-themed escape games with live actors and thrilling adventures.">
+    <meta property="twitter:title" content="Birtes Mühendislik - Scariest Escape Rooms in {{ $location }}">
+    <meta property="twitter:description" content="Challenge yourself in the scariest escape rooms in {{ $location }}. Birtes Mühendislik offers horror-themed escape games with live actors and thrilling adventures.">
     <meta property="twitter:image" content="{{ asset('img/logo/haunted-meta-logo.png') }}">
     
 

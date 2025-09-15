@@ -43,7 +43,7 @@ final class PriceTable extends PowerGridComponent
 //        $this->showCheckBox();
 
         return [
-            Exportable::make('Black Out Price List')
+            Exportable::make('Birtes Mühendislik Price List')
                 ->csvSeparator('|')
                 ->csvDelimiter("'")
                 ->striped('#A6ACCD')->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),

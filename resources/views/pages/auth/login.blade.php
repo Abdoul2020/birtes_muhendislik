@@ -7,7 +7,7 @@
         <div class="text-center mb-11">
 
             <div>
-                <img src="{{ image('logos/vinc.png') }}" alt="Blackout" style="max-width: 200px">
+                <img src="{{ image('logos/vinc.png') }}" alt="Birtes Mühendislik" style="max-width: 200px">
             </div>
             
             <!--begin::Title-->

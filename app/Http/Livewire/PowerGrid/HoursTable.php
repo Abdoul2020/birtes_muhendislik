@@ -37,7 +37,7 @@ final class HoursTable extends PowerGridComponent
     public function setUp(): array
     {
         return [
-            Exportable::make('Black Out Hour List')
+            Exportable::make('Birtes Mühendislik Hour List')
                 ->csvSeparator('|')
                 ->csvDelimiter("'")
                 ->striped('#A6ACCD')->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
