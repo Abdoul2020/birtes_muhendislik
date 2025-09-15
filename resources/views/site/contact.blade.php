@@ -167,8 +167,13 @@
                             @foreach($items as $item)
                             @php
                             $plat = $item->platform;
+
+
                             $info = $platformMap[$plat] ?? ['label' => ucfirst($plat), 'icon' => 'phone'];
                             @endphp
+
+                            @if (in_array($item->platform, ['ofisadres', 'ofistelefon', 'eposta']))
+
                             <li>
                                 <div class="icon-circle office-ankara" {{ $placeKey != 1 ? 'style=background-color:#323232;' : '' }}>
                                     <svg class="icon" width="24" height="24">
@@ -177,9 +182,13 @@
                                 </div>
                                 <div class="details">
                                     <span class="label">{{ $info['label'] }}</span><br>
+
                                     <span class="text">{{ $item->username }}</span>
+
                                 </div>
                             </li>
+
+                            @endif
                             @endforeach
                         </ul>
                     </div>
