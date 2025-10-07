@@ -94,18 +94,18 @@ class ProjectController extends Controller
         // Image parameters and upload logic
         $params_poster = [
             "name" => "poster",
-            "dir" => "uploads/rooms/{$room->id}/",
+            "dir" => "uploads/projectdone/{$room->id}/",
             "file" => $info["poster"] ?? null,
             "resize" => ['w' => '1060', 'h' => '656'],
-            "key" => "rooms",
+            "key" => "projectdone",
             "rm" => $info['poster_remove'] ?? null
         ];
         $params_banner = [
             "name" => "banner",
-            "dir" => "uploads/rooms/{$room->id}/",
+            "dir" => "uploads/projectdone/{$room->id}/",
             "file" => $info["banner"] ?? null,
             "resize" => ['w' => '2000', 'h' => '1500'],
-            "key" => "rooms",
+            "key" => "projectdone",
             "rm" => $info['banner_remove'] ?? null
         ];
 
@@ -187,6 +187,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
+
+
         $room = Projects::findOrFail($id);
         $datas = $request->except('_method', '_token');
 
@@ -203,26 +207,26 @@ class ProjectController extends Controller
 
         $params_poster = [
             "name" => "poster",
-            "dir" => "uploads/rooms/$room->id/",
+            "dir" => "uploads/projectdone/$room->id/",
             "file" => $info["poster"] ?? null,
             "resize" => ['w' => '1060', 'h' => '656'],
-            "key" =>  "rooms",
+            "key" =>  "projectdone",
             "rm" => $info['poster_remove'] ?? null
         ];
         $params_banner = [
             "name" => "banner",
-            "dir" => "uploads/rooms/$room->id/",
+            "dir" => "uploads/projectdone/$room->id/",
             "file" => $info["banner"] ?? null,
             "resize" => ['w' => '2000', 'h' => '1500'],
-            "key" =>  "rooms",
+            "key" =>  "projectdone",
             "rm" => $info['banner_remove'] ?? null
         ];
         $params_text_picture = [
             "name" => "text_picture",
-            "dir" => "uploads/rooms/$room->id/",
+            "dir" => "uploads/projectdone/$room->id/",
             "file" => $info["text_picture"] ?? null,
             "resize" => ['w' => '1000', 'h' => '600'],
-            "key" =>  "rooms",
+            "key" =>  "projectdone",
             "rm" => $info['text_picture_remove'] ?? null
         ];
 

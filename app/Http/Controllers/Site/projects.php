@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Projects as ModelsProjects;
+use App\Models\Resimgalleri;
 use App\Models\Room;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
@@ -23,8 +24,8 @@ class projects extends Controller
         $contacts= SocialMedia::all();
 
 
+
         return view('site.projects.index',[
-            // 'about_birtes' => $about_text,
             'projects' =>$projects,
             'services'=> $products,
             'contacts' => $contacts,
@@ -45,11 +46,7 @@ class projects extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        // group rooms
-        $groupedRooms = ModelsProjects::where('status', 1)
-            ->orderBy('order')
-            ->get()
-            ->groupBy('place_id');
+        $resimgalleri = Resimgalleri::where('level', $projectsdetails->id)->get();
 
             $products = Room::all();
 
@@ -61,10 +58,8 @@ class projects extends Controller
             'projectsdetails' => $projectsdetails,
             'services'=> $products,
             'contacts' => $contacts,
-            // 'attachments' => $attachments,
-            // 'groupedRooms' => $groupedRooms,
-            // 'allProducts' => $allProducts,
-            // 'allAttachments' => $allattachments
+            'resimgalleri' => $resimgalleri,
+            
         ]);
     }
 

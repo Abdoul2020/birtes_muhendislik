@@ -7,6 +7,7 @@ use App\Models\HomeBanner;
 use App\Models\Place;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeBannerController extends Controller
 {

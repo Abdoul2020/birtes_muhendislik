@@ -92,16 +92,7 @@
                                 <!--end::Col-->
 
 
-                                <!--begin::Col Last Name -->
-                                <!-- <div class="col-md-6 fv-row">
-                                    <div class="form-floating mb-7 fv-row">
-                                        <input name="slug" type="text"
-                                               class="form-control form-control-solid" id="slug"
-                                               value="{{ $room->slug }}" required/>
-                                        <label class="required " for="slug">uzantı</label>
-                                    </div>
-                                </div> -->
-                                <!--end::Col-->
+                               
 
 
                                 <!--end::Col-->
@@ -135,14 +126,7 @@
 
 
 
-                            <!--begin::Input group-->
-                            <!-- <div class="d-flex flex-column mb-8">
-                                <div class="form-floating">
-                                    <textarea name="description" data-kt-autosize="true" class="tox-target"
-                                        id="floatingContentDescription">{!! $room->description !!}</textarea>
-                                </div>
-                            </div> -->
-                            <!--end::Input group-->
+                            
 
 
 

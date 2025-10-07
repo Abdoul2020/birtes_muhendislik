@@ -42,6 +42,7 @@ Route::get("/projects", [projects::class, 'index'])->name('home.projects');
 Route::get("/projeler/{slug}", [projects::class, 'projectdetail'])->name('home.projectsdetail');
 
 Route::get("/references", [referencespages::class, 'index'])->name('home.references');
+Route::get("/perakende", [HomeController::class, 'perakende'])->name('home.perakende');
 Route::get("/misyon-vizyon", [missionVision::class, 'index'])->name('home.mission');
 Route::get("/kisisel_verilerin_korunmasi_kanunu", [kvkkpage::class, 'index'])->name('home.kvkk');
 

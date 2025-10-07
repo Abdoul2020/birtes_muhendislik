@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\products\sepetlivinController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ReferansCategoryController;
 use App\Http\Controllers\Admin\ReferensProjectController;
+use App\Http\Controllers\Admin\ResimgalleriController;
 
 Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -76,6 +77,28 @@ Route::controller(ProjectController::class)->name('projects.')->group(callback: 
     Route::post('getproject/{place_id}', 'getRooms')->name('getRooms');
 });
 // end of projects done
+
+
+// ressim galleri
+
+
+Route::controller(ResimgalleriController::class)->name('ressimgalleri.')->group(callback: function () {
+    Route::get('projeresimleri', 'index')->name('index'); 
+    Route::post('projeresimleri', 'store')->name('store'); 
+    Route::get('projeresimleri/create', 'create')->name('create'); 
+    Route::get('projeresimleri/{room}', 'show')->name('show'); 
+    Route::patch('projeresimleri/{room}', 'update')->name('update'); 
+    Route::delete('projeresimleri/{room}', 'destroy')->name('destroy'); 
+    Route::get('projeresimleri/{room}/edit', 'edit')->name('edit');
+    Route::post('getprojectresim/{place_id}', 'getRooms')->name('getRooms');
+});
+
+
+
+
+// end ressim galleri
+
+
 
 // referens main kategori
 Route::controller(  ReferansCategoryController ::class)->name('referensmain.')->group(callback: function () {

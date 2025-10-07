@@ -17,6 +17,7 @@
   'power-grid.referens-projects-table' => 'App\\Http\\Livewire\\PowerGrid\\ReferensProjectsTable',
   'power-grid.request-video-table' => 'App\\Http\\Livewire\\PowerGrid\\RequestVideoTable',
   'power-grid.reservation-table' => 'App\\Http\\Livewire\\PowerGrid\\ReservationTable',
+  'power-grid.ressim-galleri-table' => 'App\\Http\\Livewire\\PowerGrid\\RessimGalleriTable',
   'power-grid.room-table' => 'App\\Http\\Livewire\\PowerGrid\\RoomTable',
   'power-grid.signature-table' => 'App\\Http\\Livewire\\PowerGrid\\SignatureTable',
   'power-grid.social-table' => 'App\\Http\\Livewire\\PowerGrid\\SocialTable',

@@ -729,8 +729,6 @@ h6 {
 .facts-section {
   /* background-image: url('/assets/site/img/about_birtes.webp') !important; */
   background-image: url('/storage/assets/site/img/about_birtes.webp') !important;
-
-
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Parallax background effect */ 

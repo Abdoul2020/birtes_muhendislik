@@ -32,6 +32,8 @@ class ReferansMainCategoryController extends Controller
 
 
 
+
+
         return view('pages.referensmain.index', compact('rooms', 'places'));
     }
 
@@ -154,6 +156,8 @@ class ReferansMainCategoryController extends Controller
         $rooms = Room::withoutTrashed()->get();
         $places = Place::withoutTrashed()->get();
         $hours = Hour::withoutTrashed()->get();
+
+
 
         return view('pages.rooms._edit', [
             'room' => $room,

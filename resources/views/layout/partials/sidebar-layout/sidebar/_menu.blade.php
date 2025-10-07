@@ -9,7 +9,7 @@
         <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu" data-kt-menu="true"
             data-kt-menu-expand="false">
             <!--begin:Dashboard-->
-            
+
             <!--begin:Pages-->
             <div class="menu-item pt-5">
                 <!--begin:Menu content-->
@@ -71,21 +71,6 @@
 
 
 
-    <!-- @hasanyrole('dubai|Super-Admin') -->
-    <!--begin:Reservations-->
-    <!-- <div data-kt-menu-trigger="click" class="menu-item">
-                    <div class="menu-item"> -->
-    <!--begin:Menu link-->
-    <!-- <a class="menu-link" href="{{ route('admin.reservations.dubai') }}">
-                            <span class="menu-icon">{!! getSvgIcon('duotune/communication/com005.svg', 'svg-icon svg-icon-2') !!}</span>
-                            <span class="menu-title"> Takip</span>
-                        </a> -->
-    <!--end:Menu link-->
-    <!-- </div>
-                </div>  -->
-    <!--end:Reservations-->
-    <!-- @endhasanyrole -->
-
 
 
     @hasanyrole('abudhabi|Super-Admin')
@@ -107,16 +92,6 @@
 
 @hasanyrole('Super-Admin|admin')
 <!--begin:Rooms-->
-<!-- <div data-kt-menu-trigger="click" class="menu-item">
-    <div class="menu-item"> -->
-<!--begin:Menu link-->
-<!-- <a class="menu-link" href="{{ route('admin.rooms.index') }}">
-            <span class="menu-icon">{!! getSvgIcon('duotune/general/gen022.svg', 'svg-icon svg-icon-2') !!}</span>
-            <span class="menu-title">Ürünler</span>
-        </a> -->
-<!--end:Menu link-->
-<!-- </div>
-</div> -->
 
 
 <!-- ana sayfa banner page -->
@@ -291,6 +266,7 @@
 
 <!-- referens projeleri -->
 
+
 <div data-kt-menu-trigger="click" class="menu-item">
     <div class="menu-item">
         <!--begin:Menu link-->
@@ -312,6 +288,32 @@
 </div>
 
 <!-- end of referens projeleri -->
+
+
+<!-- resim galleriler -->
+
+
+<div data-kt-menu-trigger="click" class="menu-item">
+    <div class="menu-item">
+        <!--begin:Menu link-->
+        <a class="menu-link" href="{{ route('admin.ressimgalleri.index') }}">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="feather feather-camera" viewBox="0 0 24 24">
+                    <path
+                        d="M23 7l-7 0 2-2h-3l-2-2h-4l-2 2h-3l2 2-7 0c-1.1 0-1.99 0.9-1.99 2l0 10c0 1.1 0.89 2 1.99 2l20 0c1.1 0 2-0.9 2-2l0-10c0-1.1-0.9-2-2-2z" />
+                    <circle cx="12" cy="13" r="4" />
+                </svg>
+            </span>
+            <span class="menu-title"> Resim Gallerileri</span>
+        </a>
+        <!--end:Menu link-->
+    </div>
+</div>
+
+
+<!-- end of resim gallerisi -->
 
 
 <!--end:Contact messages-->

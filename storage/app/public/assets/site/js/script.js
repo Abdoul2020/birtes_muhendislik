@@ -64,41 +64,27 @@
             },
         });
 
-        window.addEventListener("load", (event) => {
-            //isotope
-            $(".isotope-container").isotope({
-                // options
-                itemSelector: ".item",
-                layoutMode: "masonry",
-            });
+        
 
-            // Initialize Isotope
+        window.addEventListener("load", function() {
+            // Initialize Isotope only once
             var $container = $(".isotope-container").isotope({
-                // options
                 itemSelector: ".item",
                 layoutMode: "masonry",
             });
-
-            $(document).ready(function () {
-                //active button
-                $(".filter-button").click(function () {
-                    $(".filter-button").removeClass("active");
-                    $(this).addClass("active");
-                });
-            });
-
-            // Filter items on button click
-            $(".filter-button").click(function () {
+        
+            // On button clicks, filter + set active class
+            $(".filter-button").on("click", function() {
                 var filterValue = $(this).attr("data-filter");
-                if (filterValue === "*") {
-                    // Show all items
-                    $container.isotope({ filter: "*" });
-                } else {
-                    // Show filtered items
-                    $container.isotope({ filter: filterValue });
-                }
+                $container.isotope({ filter: filterValue });
+        
+                // Update the active state
+                $(".filter-button").removeClass("active");
+                $(this).addClass("active");
             });
         });
+
+
     }); // End of a document
 
     // anaimation word changing
@@ -111,38 +97,7 @@
     const highlightTime = 700;
     const newWordDelay = 500;
 
-    function type() {
-        const current = words[wordIndex];
-        if (charIndex < current.length) {
-            typedEl.textContent += current.charAt(charIndex);
-            charIndex++;
-            setTimeout(type, typingDelay);
-        } else {
-            // highlight
-            typedEl.classList.add("highlight");
-            setTimeout(() => {
-                typedEl.classList.remove("highlight");
-                setTimeout(erase, highlightTime);
-            }, newWordDelay);
-        }
-    }
-
-    function erase() {
-        const current = words[wordIndex];
-        if (charIndex > 0) {
-            typedEl.textContent = current.substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(erase, erasingDelay);
-        } else {
-            // next word
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(type, typingDelay);
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        setTimeout(type, newWordDelay);
-    });
+   
 
     document.addEventListener("DOMContentLoaded", function () {
         const slide = document.querySelector(".slider-video-slide");
@@ -195,12 +150,12 @@
         $(".testimonial-carousel").owlCarousel({
             loop: true,
             margin: 20,
-            nav: true,
+            nav: false,
             navText: [
                 '<i class="bi bi-chevron-left"></i>',
                 '<i class="bi bi-chevron-right"></i>',
             ],
-            dots: true,
+            dots: false,
             autoplay: true,
             autoplayTimeout: 3000,
             responsive: {

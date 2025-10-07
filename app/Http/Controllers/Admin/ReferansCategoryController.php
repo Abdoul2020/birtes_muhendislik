@@ -70,6 +70,8 @@ class ReferansCategoryController extends Controller
     {
         $datas = $request->except('_method', '_token');
 
+
+
         // Create a new Room instance
         $room = new MainCategory();
 
@@ -91,26 +93,26 @@ class ReferansCategoryController extends Controller
         // Image parameters and upload logic
         $params_poster = [
             "name" => "poster",
-            "dir" => "uploads/rooms/{$room->id}/",
+            "dir" => "uploads/referensmain/{$room->id}/",
             "file" => $info["poster"] ?? null,
             "resize" => ['w' => '750', 'h' => '1000'],
-            "key" => "rooms",
+            "key" => "referensmain",
             "rm" => $info['poster_remove'] ?? null
         ];
         $params_banner = [
             "name" => "banner",
-            "dir" => "uploads/rooms/{$room->id}/",
+            "dir" => "uploads/referensmain/{$room->id}/",
             "file" => $info["banner"] ?? null,
             "resize" => ['w' => '2000', 'h' => '1500'],
-            "key" => "rooms",
+            "key" => "referensmain",
             "rm" => $info['banner_remove'] ?? null
         ];
         $params_text_picture = [
             "name" => "text_picture",
-            "dir" => "uploads/rooms/{$room->id}/",
+            "dir" => "uploads/referensmain/{$room->id}/",
             "file" => $info["text_picture"] ?? null,
             "resize" => ['w' => '1000', 'h' => '600'],
-            "key" => "rooms",
+            "key" => "referensmain",
             "rm" => $info['text_picture_remove'] ?? null
         ];
 
@@ -159,6 +161,7 @@ class ReferansCategoryController extends Controller
         $places = Place::withoutTrashed()->get();
         $hours = Hour::withoutTrashed()->get();
 
+
         return view('pages.referensmain._edit', [
             'room' => $room,
             // 'prices' => $room->price,
@@ -194,26 +197,26 @@ class ReferansCategoryController extends Controller
 
         $params_poster = [
             "name" => "poster",
-            "dir" => "uploads/rooms/$room->id/",
+            "dir" => "uploads/referensmain/$room->id/",
             "file" => $info["poster"] ?? null,
             "resize" => ['w' => '750', 'h' => '1000'],
-            "key" =>  "rooms",
+            "key" =>  "referensmain",
             "rm" => $info['poster_remove'] ?? null
         ];
         $params_banner = [
             "name" => "banner",
-            "dir" => "uploads/rooms/$room->id/",
+            "dir" => "uploads/referensmain/$room->id/",
             "file" => $info["banner"] ?? null,
             "resize" => ['w' => '2000', 'h' => '1500'],
-            "key" =>  "rooms",
+            "key" =>  "referensmain",
             "rm" => $info['banner_remove'] ?? null
         ];
         $params_text_picture = [
             "name" => "text_picture",
-            "dir" => "uploads/rooms/$room->id/",
+            "dir" => "uploads/referensmain/$room->id/",
             "file" => $info["text_picture"] ?? null,
             "resize" => ['w' => '1000', 'h' => '600'],
-            "key" =>  "rooms",
+            "key" =>  "referensmain",
             "rm" => $info['text_picture_remove'] ?? null
         ];
 

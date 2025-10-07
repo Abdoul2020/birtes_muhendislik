@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\PowerGrid;
 
 use App\Models\Projects as ModelsProjects;
-use App\Models\Room;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\{
     Button,
@@ -21,6 +20,7 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 final class ProjectTable extends PowerGridComponent
 {
+
     use ActionButton;
 
     public bool $multiSort = true;

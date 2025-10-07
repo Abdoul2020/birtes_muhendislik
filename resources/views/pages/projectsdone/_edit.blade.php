@@ -105,10 +105,10 @@
 
                                 <div class="col-md-12 fv-row">
                                     <div class="form-floating mb-7 fv-row">
-                                        <select name="platform" id="platform" class="form-select form-select-solid" required>
+                                        <select name="level" id="level" class="form-select form-select-solid" required>
                                             <option value=""> Proje Durumu Seçiniz</option>
 
-                                            <option value="devamedem" {{ $room->level == 'devameden' ? 'selected' : '' }}>Devam Eden</option>
+                                            <option value="devameden" {{ $room->level == 'devameden' ? 'selected' : '' }}>Devam Eden</option>
                                             <option value="tamamlanan" {{ $room->level == 'tamamlanan' ? 'selected' : '' }}> Tamamlanan </option>
                                             <option value="whatsap" {{ $room->level == 'perakendeproje' ? 'selected' : '' }}>Perakende Proje</option>
                                         </select>
