@@ -550,10 +550,29 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Load CSV data from server
         const tableContainer = document.getElementById('tableContainer');
-        const xlsData = JSON.parse(tableContainer.getAttribute('data-perakende') || '[]');
+        const rawData = JSON.parse(tableContainer.getAttribute('data-perakende') || '{}');
+        
+        // Extract header mapping and actual data
+        let headerMapping = {};
+        let xlsData = [];
+        
+        if (rawData && typeof rawData === 'object') {
+            if (rawData.data && Array.isArray(rawData.data)) {
+                xlsData = rawData.data;
+            }
+            if (rawData.headerMapping && typeof rawData.headerMapping === 'object') {
+                headerMapping = rawData.headerMapping;
+            }
+        } else if (Array.isArray(rawData)) {
+            // Fallback for old data format
+            xlsData = rawData;
+        } else {
+            console.warn('Unexpected data format:', rawData);
+        }
 
         console.log('Data loaded:', xlsData);
         console.log('Data length:', xlsData.length);
+        console.log('Header mapping:', headerMapping);
 
         let currentData = [...xlsData];
         let filteredData = [...xlsData];
@@ -629,19 +648,13 @@
             document.getElementById('tableContainer').style.display = 'block';
             document.getElementById('noDataMessage').style.display = 'none';
 
-            // Create headers
+            // Create headers using original Turkish headers from mapping
             const headers = Object.keys(filteredData[0]);
             headers.forEach(header => {
                 const th = document.createElement('th');
-                let readableHeader = header
-                    .replace(/_/g, ' ')
-                    .replace(/([A-Z])/g, ' $1')
-                    .trim()
-                    .split(' ')
-                    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                    .join(' ');
-
-                th.textContent = readableHeader;
+                // Use original Turkish header from mapping, or fallback to sanitized version
+                const originalHeader = headerMapping[header] || header;
+                th.textContent = originalHeader;
                 thead.appendChild(th);
             });
 

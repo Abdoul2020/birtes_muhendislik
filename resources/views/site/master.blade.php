@@ -1,6 +1,7 @@
 <!doctype html>
-<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}" {!! theme()->printHtmlAttributes('html') !!}
-{{ theme()->printHtmlClasses('html') }}>
+
+<html class="no-js" lang="tr" {!! theme()->printHtmlAttributes('html') !!} {{ theme()->printHtmlClasses('html') }}>
+
 
 <head>
 
