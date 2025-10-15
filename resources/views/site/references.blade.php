@@ -60,19 +60,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
             <!-- Card -->
 
-            <!-- @foreach ($maincategories as $category)
-    <h3>{{ $category['title'] }}</h3>
-
-    @if (!empty($category['references']))
-        <ul>
-            @foreach ($category['references'] as $reference)
-                <li>{{ $reference['title'] }}</li>
-            @endforeach
-        </ul>
-    @else
-        <p>No references found.</p>
-    @endif
-@endforeach -->
+            
 
 
             @foreach ($maincategories as $category)
@@ -130,9 +118,13 @@
                             <tbody id="modalBody" class="divide-y divide-gray-200"></tbody>
                         </table>
                     </div>
+                    
+                    <!-- Dynamic button container -->
+                    <div id="modalActionButton" class="mt-4 text-center"></div>
                 </div>
             </div>
         </div>
+        
     </section>
     <!-- Projects End -->
 
@@ -154,7 +146,7 @@
         const normalizedTitle = category.title.trim().toLowerCase().replace(/\s+/g, '');
         TITLES[normalizedTitle] = category.title;
 
-        TABLES[normalizedTitle] = (category.references ?? []).map(ref =>{ 
+        TABLES[normalizedTitle] = (category.references ?? []).map((ref, index) =>{ 
 
             const startYear = ref.baslangic_tarihi ? new Date(ref.baslangic_tarihi).getFullYear() : '';
         const endYear = ref.bitis_tarihi ? new Date(ref.bitis_tarihi).getFullYear() : '';
@@ -163,7 +155,7 @@
 
         return[
 
-            ref.id,
+            index + 1,
             ref.title,
             ref.yer,
             ref.ilgili_kurum,
@@ -187,6 +179,7 @@
     const modalBody = document.getElementById("modalBody");
     const modalTitle = document.getElementById("modalTitle");
     const categoryBand = document.getElementById("categoryBand");
+    const modalActionButton = document.getElementById("modalActionButton");
 
     // Open modal and render rows
     function openModal(key) {
@@ -211,6 +204,28 @@
                 <td class="px-4 py-3">${r[6]}</td>
             </tr>
         `).join("");
+
+        // Add button for "Devam Eden İşler" or "Tamamlanan" categories
+        modalActionButton.innerHTML = '';
+        const titleLower = title.toLowerCase();
+        
+        if (titleLower === 'devam eden işler' || titleLower.includes('devam eden')) {
+            const projectsUrl = '{{ route("home.projects") }}' + '?filter=devameden';
+            modalActionButton.innerHTML = `
+                <a href="${projectsUrl}" 
+                   class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                    Devam Eden Projeleri Görüntüle
+                </a>
+            `;
+        } else if (titleLower === 'tamamlanan işler' || titleLower.includes('tamamlanan')) {
+            const projectsUrl = '{{ route("home.projects") }}' + '?filter=tamamlanan';
+            modalActionButton.innerHTML = `
+                <a href="${projectsUrl}" 
+                   class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
+                    Tamamlanan Projeleri Görüntüle
+                </a>
+            `;
+        }
 
         modal.classList.remove("hidden");
         modal.classList.add("flex");

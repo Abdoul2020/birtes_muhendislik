@@ -282,23 +282,35 @@
 
                     <div class="row">
                         @php
-                        $chunks = $services->chunk(4);
+                        $servicesArray = $services->toArray();
+                        $totalServices = count($servicesArray);
+                        $halfCount = ceil($totalServices / 2);
+                        $firstColumn = array_slice($servicesArray, 0, $halfCount);
+                        $secondColumn = array_slice($servicesArray, $halfCount);
                         @endphp
 
-                        @foreach ($chunks as $chunk)
                         <div class="col-6">
                             <ul class="menu-list d-flex flex-column list-unstyled">
-                                @foreach ($chunk as $service)
+                                @foreach ($firstColumn as $service)
                                 <li>
-                                    <a href="{{ route('home.services') }}">{{ $service->title }}</a>
+                                    <a href="{{ route('home.services') }}">{{ $service['title'] }}</a>
                                 </li>
                                 @endforeach
                             </ul>
                         </div>
-                        @endforeach
+                        <div class="col-6">
+                            <ul class="menu-list d-flex flex-column list-unstyled">
+                                @foreach ($secondColumn as $service)
+                                <li>
+                                    <a href="{{ route('home.services') }}">{{ $service['title'] }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     

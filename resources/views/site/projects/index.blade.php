@@ -112,7 +112,33 @@
 
 @section('scripts')
 
-
-
+<script>
+    // Check if there's a filter parameter in the URL
+    window.addEventListener('load', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const filter = urlParams.get('filter');
+        
+        if (filter) {
+            // Wait a bit for Isotope to fully initialize
+            setTimeout(function() {
+                // Find and click the appropriate filter button
+                let filterSelector = '';
+                if (filter === 'devameden') {
+                    filterSelector = '.devameden';
+                } else if (filter === 'tamamlanan') {
+                    filterSelector = '.tamamlanan';
+                }
+                
+                if (filterSelector) {
+                    const targetButton = document.querySelector(`[data-filter="${filterSelector}"]`);
+                    if (targetButton) {
+                        // Trigger the click which will handle both filtering and active class
+                        targetButton.click();
+                    }
+                }
+            }, 100);
+        }
+    });
+</script>
 
 @endsection

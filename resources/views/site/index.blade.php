@@ -686,9 +686,7 @@
                             <div class="col-xl-6 col-lg-8">
                                 <div class="hero-content">
                                     
-                                    <h1 class="banner-title text-white mb-4">
-                                        <span class="text-primary">Birtes</span> Mühendislik
-                                    </h1>
+                                   
                                     <p class="text-white fs-5 mb-4 opacity-90" style="visibility: hidden;">
                                         Profesyonel mühendislik çözümleri ile hayallerinizi gerçeğe dönüştürüyoruz
                                     </p>

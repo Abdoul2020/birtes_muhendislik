@@ -82,9 +82,9 @@
                                 <a class="nav-link {{ Route::is('home.projects') || Route::is('home.projectsdetail') ? 'active' : '' }} p-0 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                                     aria-expanded="false">Taahhüt Projeleri</a>
                                 <ul class="dropdown-menu dropdown-menu-end animate slide mt-3 border-0 shadow">
-                                    <li><a href="{{ route('home.projects') }}" class="dropdown-item {{ Route::is('home.projects') ? 'active' : '' }}"> Devam Eden Projeler</a>
+                                    <li><a href="{{ route('home.projects', ['filter' => 'devameden']) }}" class="dropdown-item {{ Route::is('home.projects') ? 'active' : '' }}"> Devam Eden Projeler</a>
                                     </li>
-                                    <li><a href="{{ route('home.projects') }}" class="dropdown-item {{ Route::is('home.projects') ? 'active' : '' }}"> Tamamlanan Projeler </a>
+                                    <li><a href="{{ route('home.projects', ['filter' => 'tamamlanan']) }}" class="dropdown-item {{ Route::is('home.projects') ? 'active' : '' }}"> Tamamlanan Projeler </a>
                                     </li>
                                 </ul>
                             </li>
