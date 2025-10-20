@@ -348,7 +348,7 @@
                             </span>
                         </div>
                         
-                        <h2 class="display-5 fw-bold mb-4">
+                        <h2 class="display-5 fw-bold mb-4" style="color:#2a3990">
                             <span class="text-gradient">Birtes</span> Mühendislik
                         </h2>
                         

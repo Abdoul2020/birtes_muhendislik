@@ -857,7 +857,7 @@
                             </div>
 
                             <div class="h-100">
-                                <h1 class="display-5 fw-bold mb-4">
+                                <h1 class="display-5 fw-bold mb-4" style="color:#2a3990">
                                     Birtes <span class="text-primary">Mühendislik</span>
                                 </h1>
 

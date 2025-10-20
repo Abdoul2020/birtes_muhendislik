@@ -33,18 +33,18 @@ class HomeBannerController extends Controller
             'image_or_video_name' => 'required|string|max:255',
             'place_for' => 'required|string',
             'photo_img' => 'nullable|image|max:10240', // Adjust size as needed
-            'video_mp4' => 'nullable|mimes:mp4|max:51200', // Adjust size as needed
+            'video_mp4' => 'nullable|mimes:mp4|max:204800', // Allow up to ~200MB
         ]);
 
         $photoPath = null;
         $videoPath = null;
 
         if ($request->hasFile('photo_img')) {
-            $photoPath = $request->file('photo_img')->store('storage/uploads/photos', 'public');
+            $photoPath = $request->file('photo_img')->store('uploads/photos', 'public');
         }
 
         if ($request->hasFile('video_mp4')) {
-            $videoPath = $request->file('video_mp4')->store('storage/uploads/videos', 'public');
+            $videoPath = $request->file('video_mp4')->store('uploads/videos', 'public');
         }
 
         $photoVideo = HomeBanner::create([
